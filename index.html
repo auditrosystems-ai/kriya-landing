@@ -403,9 +403,13 @@ footer{border-top:1px solid var(--line);padding:44px 0;color:var(--dim2);font-si
 .foot-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
 .foot-brand{display:flex;align-items:center;gap:8px;color:var(--dim);font-weight:700}
 .foot-brand svg{height:16px;width:auto;opacity:.7}
-.foot-links{display:flex;gap:22px}
+.foot-links{display:flex;align-items:center;gap:22px}
 .foot-links a{color:var(--dim2);transition:color .2s}
 .foot-links a:hover{color:var(--mint2)}
+.foot-social{display:flex;align-items:center;gap:14px;margin-left:6px;padding-left:22px;border-left:1px solid var(--line)}
+.foot-social a{display:flex;color:var(--mint);opacity:.75;transition:opacity .2s,color .2s}
+.foot-social a:hover{opacity:1;color:var(--mint2)}
+.foot-social svg{width:18px;height:18px}
 .foot-fine{margin-top:28px;padding-top:24px;border-top:1px solid var(--line);font-size:12px;line-height:1.7;color:#4C6259}
 
 /* ---------- sticky mobile cta ---------- */
@@ -892,6 +896,11 @@ footer{border-top:1px solid var(--line);padding:44px 0;color:var(--dim2);font-si
         <a href="https://crm.kriyasystems.in/" target="_blank" rel="noopener">Live Demo</a>
         <a href="tel:+919874700058">98747 00058</a>
         <a href="mailto:info@kriyasystems.in">Email</a>
+        <div class="foot-social">
+          <a href="https://www.instagram.com/kriya.systems" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="https://www.facebook.com/kriya.systems" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h-2a5 5 0 0 0-5 5v3H6v4h2v6h4v-6h3l1-4h-4V8a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.youtube.com/@KriyaSystems" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9.5l6 2.5-6 2.5z" fill="currentColor" stroke="none"/></svg></a>
+        </div>
       </div>
     </div>
     <div class="foot-fine">
