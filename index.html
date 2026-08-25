@@ -294,6 +294,7 @@ h2 em{font-style:italic;color:var(--mint2);font-weight:500}
 /* ---------- why / founder ---------- */
 .why-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
 @media(max-width:860px){.why-grid{grid-template-columns:1fr;gap:36px}}
+@media(max-width:860px){#impact .wrap{grid-template-columns:1fr;gap:28px}}
 .why-grid p{color:var(--dim);font-size:15.5px;line-height:1.75;margin-bottom:18px}
 .why-grid p strong{color:var(--txt)}
 .kriya-card{
@@ -509,6 +510,30 @@ footer{border-top:1px solid var(--line);padding:44px 0;color:var(--dim2);font-si
     </div>
   </div>
 </div>
+
+<!-- BUSINESS IMPACT -->
+<section id="impact" style="padding:64px 0 20px">
+  <div class="wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
+    <div class="rv">
+      <span class="tag">Why it matters</span>
+      <h2 style="margin-bottom:18px">Less admin.<br><em>More closed deals.</em></h2>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;gap:12px;align-items:flex-start"><span style="font-size:20px">📈</span><span style="font-size:14.5px;color:var(--dim)">First to quote usually wins — Kriya gets you there in minutes, not days.</span></div>
+        <div style="display:flex;gap:12px;align-items:flex-start"><span style="font-size:20px">💸</span><span style="font-size:14.5px;color:var(--dim)">No lead goes cold from being forgotten — fewer deals lost, better top line.</span></div>
+        <div style="display:flex;gap:12px;align-items:flex-start"><span style="font-size:20px">⏱️</span><span style="font-size:14.5px;color:var(--dim)">Hours back every week on admin — time that goes straight to selling, not paperwork.</span></div>
+        <div style="display:flex;gap:12px;align-items:flex-start"><span style="font-size:20px">🧾</span><span style="font-size:14.5px;color:var(--dim)">Fewer pricing mistakes, fewer forgotten follow‑ups — protects your bottom line too.</span></div>
+      </div>
+    </div>
+    <div class="rv rv2" style="background:var(--surf);border:1px solid var(--line);border-radius:18px;padding:28px">
+      <svg viewBox="0 0 300 130" width="100%" style="display:block">
+        <defs><linearGradient id="growthGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" style="stop-color:var(--mint);stop-opacity:.35"/><stop offset="100%" style="stop-color:var(--mint);stop-opacity:0"/></linearGradient></defs>
+        <polygon points="0,105 45,92 90,78 135,82 180,55 225,38 270,15 300,8 300,130 0,130" fill="url(#growthGrad)"/>
+        <polyline points="0,105 45,92 90,78 135,82 180,55 225,38 270,15 300,8" fill="none" stroke="var(--mint)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div style="display:flex;justify-content:space-between;margin-top:10px;font-size:11px;color:var(--dim2);text-transform:uppercase;letter-spacing:.05em"><span>Before Kriya</span><span>With Kriya, over time</span></div>
+    </div>
+  </div>
+</section>
 
 <!-- HERO -->
 <section class="hero">
@@ -741,7 +766,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;color:var(--dim2);font-si
         </div>
       </div>
     </div>
-    <p class="rv" style="margin-top:8px;font-size:13.5px;color:var(--dim2);text-align:center">Think of it less as a CRM and more as your own business software — add the modules you actually need.</p>
+    <div class="callout rv" style="margin-top:32px;text-align:center">Think of it less as a CRM and more as your own business software. Got a custom field, a website integration, or something completely out of the box in mind? <strong>Tell me — if it helps your business run better, we'll build it.</strong></div>
   </div>
 </section>
 
@@ -802,10 +827,10 @@ footer{border-top:1px solid var(--line);padding:44px 0;color:var(--dim2);font-si
     <div class="section-head rv">
       <span class="tag">What it costs</span>
       <h2>Shaped around your business.<br><em>Priced the same way.</em></h2>
-      <p class="section-lede">Most CRM vendors charge per person, so hiring someone quietly raises your software bill. Kriya is one flat fee for your whole team — but every business is a different size and shape, so the honest number only comes after a conversation, not a price table.</p>
+      <p class="section-lede">Most CRM vendors charge per person, so hiring someone quietly raises your software bill. Kriya is one flat fee for your whole team — set against one lead you don't lose, one quotation that goes out faster, it's a rounding error. But every business is a different size and shape, so the honest number only comes after a conversation, not a price table.</p>
     </div>
     <div class="callout rv" style="margin-bottom:32px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
-      <span style="flex:1;min-width:240px"><strong>Call me first.</strong> I'll build a free, working dashboard around your own business so you can see exactly what you'd be getting — no obligation, no card, nothing charged until you're ready.</span>
+      <span style="flex:1;min-width:240px"><strong>See it before you spend anything.</strong> Call me and I'll build a free, working dashboard around your own business — no obligation, no card. Most people who try it can't imagine going back.</span>
       <a class="btn btn-primary" href="tel:+919874700058" style="flex-shrink:0">Call 98747 00058</a>
     </div>
     <div class="price-grid">
