@@ -61,29 +61,23 @@ body::before{
 .chart-line{stroke-dasharray:700;stroke-dashoffset:700}
 .chart-fill{opacity:0}
 .chart-bar{transform-box:fill-box;transform-origin:bottom;transform:scaleY(0)}
-.rv2.in .chart-line{animation:chartDraw 7s ease-in-out infinite}
-.rv2.in .chart-fill{animation:chartFillPulse 7s ease-in-out infinite}
-.rv2.in .chart-bar{animation:barGrow 7s ease-in-out infinite}
-.rv2.in .chart-bar-2{animation-delay:.12s}
-.rv2.in .chart-bar-3{animation-delay:.24s}
-.rv2.in .chart-bar-4{animation-delay:.36s}
+.rv2.in .chart-line{animation:chartDraw 3.2s ease-out forwards}
+.rv2.in .chart-fill{animation:chartFillPulse 3.2s ease-out forwards}
+.rv2.in .chart-bar{animation:barGrow 3.2s ease-out forwards}
+.rv2.in .chart-bar-2{animation-delay:.15s}
+.rv2.in .chart-bar-3{animation-delay:.3s}
+.rv2.in .chart-bar-4{animation-delay:.45s}
 @keyframes chartDraw{
   0%{stroke-dashoffset:700}
-  45%{stroke-dashoffset:0}
-  80%{stroke-dashoffset:0}
-  100%{stroke-dashoffset:700}
+  100%{stroke-dashoffset:0}
 }
 @keyframes chartFillPulse{
   0%{opacity:0}
-  50%{opacity:1}
-  80%{opacity:1}
-  100%{opacity:0}
+  100%{opacity:1}
 }
 @keyframes barGrow{
   0%{transform:scaleY(0)}
-  45%{transform:scaleY(1)}
-  80%{transform:scaleY(1)}
-  100%{transform:scaleY(0)}
+  100%{transform:scaleY(1)}
 }
 .rv2{transition-delay:.1s}.rv3{transition-delay:.2s}.rv4{transition-delay:.3s}.rv5{transition-delay:.4s}
 
