@@ -60,10 +60,13 @@ body::before{
 .rv.in .impact-bullet{opacity:1;transform:translateY(0)}
 .chart-line{stroke-dasharray:700;stroke-dashoffset:700}
 .chart-fill{opacity:0}
+.chart-bar{transform-box:fill-box;transform-origin:bottom;transform:scaleY(0)}
 .rv2.in .chart-line{animation:chartDraw 7s ease-in-out infinite}
-.rv2.in .chart-line-turnover{animation-delay:.15s}
-.rv2.in .chart-line-profit{animation-delay:.3s}
 .rv2.in .chart-fill{animation:chartFillPulse 7s ease-in-out infinite}
+.rv2.in .chart-bar{animation:barGrow 7s ease-in-out infinite}
+.rv2.in .chart-bar-2{animation-delay:.12s}
+.rv2.in .chart-bar-3{animation-delay:.24s}
+.rv2.in .chart-bar-4{animation-delay:.36s}
 @keyframes chartDraw{
   0%{stroke-dashoffset:700}
   45%{stroke-dashoffset:0}
@@ -75,6 +78,12 @@ body::before{
   50%{opacity:1}
   80%{opacity:1}
   100%{opacity:0}
+}
+@keyframes barGrow{
+  0%{transform:scaleY(0)}
+  45%{transform:scaleY(1)}
+  80%{transform:scaleY(1)}
+  100%{transform:scaleY(0)}
 }
 .rv2{transition-delay:.1s}.rv3{transition-delay:.2s}.rv4{transition-delay:.3s}.rv5{transition-delay:.4s}
 
@@ -560,15 +569,18 @@ footer{border-top:1px solid var(--line);padding:44px 0;color:var(--dim2);font-si
         <line x1="28" y1="132" x2="312" y2="132" stroke="var(--line2)" stroke-width="1"/>
         <text x="6" y="14" fill="var(--dim2)" font-size="9" font-family="var(--sans)">Growth ↑</text>
         <text x="270" y="148" fill="var(--dim2)" font-size="9" font-family="var(--sans)">Time →</text>
+        <!-- profit: bars growing from the axis -->
+        <rect class="chart-bar chart-bar-1" x="52" y="95" width="20" height="37" rx="2" fill="var(--gold)" opacity=".8"/>
+        <rect class="chart-bar chart-bar-2" x="124" y="78" width="20" height="54" rx="2" fill="var(--gold)" opacity=".8"/>
+        <rect class="chart-bar chart-bar-3" x="196" y="58" width="20" height="74" rx="2" fill="var(--gold)" opacity=".8"/>
+        <rect class="chart-bar chart-bar-4" x="268" y="35" width="20" height="97" rx="2" fill="var(--gold)" opacity=".8"/>
+        <!-- turnover: ascending line -->
         <polygon class="chart-fill" points="28,118 78,106 128,93 178,96 228,70 278,54 312,32 312,132 28,132" fill="url(#growthGrad)"/>
-        <polyline class="chart-line chart-line-sales" points="28,118 78,106 128,93 178,96 228,70 278,54 312,32" fill="none" stroke="var(--mint)" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
-        <polyline class="chart-line chart-line-turnover" points="28,124 78,116 128,108 178,102 228,84 278,66 312,48" fill="none" stroke="var(--mint2)" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 4" opacity=".85"/>
-        <polyline class="chart-line chart-line-profit" points="28,128 78,124 128,120 178,110 228,98 278,80 312,60" fill="none" stroke="var(--gold)" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.5 4" opacity=".85"/>
+        <polyline class="chart-line" points="28,118 78,106 128,93 178,96 228,70 278,54 312,32" fill="none" stroke="var(--mint)" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <div style="display:flex;gap:16px;justify-content:center;margin-top:14px;font-size:11px;color:var(--dim);flex-wrap:wrap">
-        <span style="display:flex;align-items:center;gap:6px"><span style="width:12px;height:2.5px;background:var(--mint);display:inline-block;border-radius:2px"></span>Sales</span>
-        <span style="display:flex;align-items:center;gap:6px"><span style="width:12px;height:2.5px;background:var(--mint2);display:inline-block;border-radius:2px"></span>Turnover</span>
-        <span style="display:flex;align-items:center;gap:6px"><span style="width:12px;height:2.5px;background:var(--gold);display:inline-block;border-radius:2px"></span>Profit</span>
+        <span style="display:flex;align-items:center;gap:6px"><span style="width:12px;height:2.5px;background:var(--mint);display:inline-block;border-radius:2px"></span>Turnover</span>
+        <span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;background:var(--gold);display:inline-block;border-radius:2px;opacity:.8"></span>Profit</span>
       </div>
       <div style="text-align:center;margin-top:8px;font-size:10.5px;color:var(--dim2)">Illustrative — actual results vary by business.</div>
     </div>
