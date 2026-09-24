@@ -365,6 +365,41 @@ h2 em{font-style:italic;color:var(--mint2);font-weight:500}
 .pain-card h3{font-size:16px;font-weight:700;margin-bottom:0}
 .pain-card p{font-size:14px;color:var(--dim);line-height:1.6;max-height:0;opacity:0;overflow:hidden;margin-top:0;transition:max-height .35s var(--ease),opacity .3s var(--ease),margin-top .35s var(--ease)}
 .pain-card:hover p{max-height:160px;opacity:1;margin-top:10px}
+/* ---------- outcomes: tap to pick ---------- */
+.outcomes li.pick{cursor:pointer;user-select:none;transition:transform .25s var(--ease),box-shadow .25s,filter .25s;opacity:.72;filter:saturate(.6)}
+.outcomes li.pick:hover{transform:translateX(4px);opacity:.9}
+.outcomes li.pick:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.outcomes li.pick svg{background:transparent;color:transparent;box-shadow:inset 0 0 0 2px rgba(20,23,29,.35);transition:background .2s,color .2s,transform .3s var(--ease)}
+.outcomes li.pick.on{opacity:1;filter:none;transform:translateX(8px);box-shadow:0 14px 30px -18px rgba(0,0,0,.6);border-left-width:8px}
+.outcomes li.pick.on svg{background:var(--mint);color:#fff;box-shadow:none;transform:scale(1.15)}
+.pick-summary{max-width:720px;margin-top:22px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.pick-summary p{color:var(--dim);font-size:15.5px;flex:1;min-width:240px}
+.pick-summary p b{color:var(--mint2)}
+@media(max-width:620px){.pick-summary .btn{white-space:normal;justify-content:center;width:100%}}
+
+/* ---------- features: tabs ---------- */
+.feat-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:-20px 0 10px}
+.feat-tab{font-family:var(--sans);font-size:14.5px;font-weight:700;padding:10px 18px;border-radius:99px;border:1px solid var(--line2);background:transparent;color:var(--dim);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.feat-tab:hover{color:var(--txt);border-color:var(--mint-dim)}
+.feat-tab.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.feat-tab:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+@media(max-width:620px){.feat-tabs{flex-wrap:nowrap;overflow-x:auto;margin-right:-20px;padding-right:20px}.feat-tab{flex-shrink:0}}
+.feat-tabbed .feat{border-top:none;border-bottom:none!important}
+.feat.off{display:none}
+.feat.enter{animation:featIn .55s var(--ease) both}
+@keyframes featIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.feat.enter .badge,.feat.enter .mic-bubble{animation:popIn .45s var(--ease) both}
+.feat.enter .mic-bubble:nth-child(1){animation-delay:.15s}
+.feat.enter .badge:nth-child(1){animation-delay:.45s}
+.feat.enter .badge:nth-child(2){animation-delay:.6s}
+.feat.enter .badge:nth-child(3){animation-delay:.75s}
+.feat.enter .mic-bubble:nth-child(n+2){animation-delay:.95s}
+@keyframes popIn{from{opacity:0;transform:scale(.85) translateY(8px)}to{opacity:1;transform:none}}
+.feat-progress{height:3px;border-radius:99px;background:var(--line);overflow:hidden;max-width:420px;margin-bottom:6px}
+.feat-progress i{display:block;height:100%;width:0;background:var(--accent)}
+.feat-progress i.run{animation:featBar 7s linear forwards}
+@keyframes featBar{to{width:100%}}
+
 .fit-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
 @media(max-width:760px){.fit-grid{grid-template-columns:1fr}}
 .fit-card{border-radius:18px;padding:26px 26px 22px}
@@ -804,7 +839,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;color:var(--dim2);font-si
     <div class="section-head rv">
       <span class="tag">What you actually want</span>
       <h2>You didn't start a business<br>to <em>chase follow‑ups.</em></h2>
-      <p class="section-lede">Nobody wants "a CRM". What owners tell me they want, when we really talk, sounds more like this:</p>
+      <p class="section-lede">Nobody wants "a CRM". What owners tell me they want, when we really talk, sounds more like this. <b style="color:var(--txt)">Tap the ones you want.</b></p>
     </div>
     <ul class="outcomes">
       <li class="rv"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>A week off without losing a deal.</b> Every enquiry saved the moment it lands, whether it's WhatsApp, a call or a walk‑in, and still there when you're back.</span></li>
@@ -813,6 +848,10 @@ footer{border-top:1px solid var(--line);padding:44px 0;color:var(--dim2);font-si
       <li class="rv"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>A business that isn't stuck in one person's head.</b> If someone leaves or goes on leave, their customers don't go with them.</span></li>
       <li class="rv"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>To know, not guess.</b> Which customers are about to go cold, and which quotes are still waiting, at a glance.</span></li>
     </ul>
+    <div class="pick-summary" id="pickSummary" aria-live="polite">
+      <p id="pickText">Pick as many as you like.</p>
+      <a class="btn btn-primary" id="pickBtn" href="https://wa.me/919874700058?text=Hi%20Akshay%2C%20I%20checked%20my%20enquiry%20leak%20on%20your%20site.%20I%27d%20like%20to%20talk%20about%20a%20free%20dashboard." target="_blank" rel="noopener" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3z"/></svg> Show me this, in a free dashboard</a>
+    </div>
   </div>
 </section>
 
@@ -1177,6 +1216,61 @@ if(window.gsap && window.ScrollTrigger){
   }
   [E,N,A].forEach(el => el.addEventListener('input', calc));
   calc();
+})();
+
+// ---------- outcomes: tap to pick, builds the WhatsApp message ----------
+(function(){
+  const items = [...document.querySelectorAll('.outcomes li')];
+  const txt = document.getElementById('pickText'), btn = document.getElementById('pickBtn');
+  if(!items.length || !txt) return;
+  const base = 'https://wa.me/919874700058?text=';
+  items.forEach(li=>{
+    li.classList.add('pick');
+    li.setAttribute('role','button'); li.setAttribute('tabindex','0'); li.setAttribute('aria-pressed','false');
+    const toggle = ()=>{ li.classList.toggle('on'); li.setAttribute('aria-pressed', li.classList.contains('on')); update(); };
+    li.addEventListener('click', toggle);
+    li.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
+  });
+  function update(){
+    const picked = items.filter(li=>li.classList.contains('on')).map(li=>li.querySelector('b').textContent.replace(/\.$/,''));
+    if(!picked.length){ txt.textContent = 'Pick as many as you like.'; btn.hidden = true; return; }
+    txt.innerHTML = picked.length===items.length
+      ? '<b>All five.</b> That is exactly what a free dashboard is set up to show you, with your own leads.'
+      : 'You picked <b>' + picked.length + ' of ' + items.length + '</b>. I can show you ' + (picked.length===1?'that':'those') + ' working with your own leads, free.';
+    btn.hidden = false;
+    btn.href = base + encodeURIComponent("Hi Akshay, I'd like to talk about a free dashboard. What I want most:\n- " + picked.join('\n- '));
+  }
+})();
+
+// ---------- features: tabs, auto-rotating until someone taps ----------
+(function(){
+  const wrap = document.querySelector('#product .wrap');
+  const feats = [...document.querySelectorAll('#product .feat')];
+  if(!wrap || feats.length < 2) return;
+  const labels = ['Quotations','Say it or paste it','Follow‑ups','WhatsApp'];
+  const bar = document.createElement('div'); bar.className = 'feat-tabs'; bar.setAttribute('role','tablist');
+  const prog = document.createElement('div'); prog.className = 'feat-progress'; prog.innerHTML = '<i></i>';
+  const tabs = feats.map((f,i)=>{
+    const b = document.createElement('button'); b.type='button'; b.className='feat-tab'; b.setAttribute('role','tab');
+    b.textContent = labels[i] || f.querySelector('h3').textContent;
+    b.addEventListener('click', ()=>{ stop(); show(i); });
+    bar.appendChild(b); return b;
+  });
+  wrap.classList.add('feat-tabbed');
+  feats[0].before(bar); bar.after(prog);
+  let cur = -1, timer = null, stopped = false;
+  function show(i){
+    if(i===cur) return; cur = i;
+    feats.forEach((f,j)=>{ f.classList.toggle('off', j!==i); f.classList.remove('enter'); f.querySelectorAll('.rv').forEach(r=>r.classList.add('in')); });
+    void feats[i].offsetWidth; feats[i].classList.add('enter');
+    tabs.forEach((t,j)=>{ t.classList.toggle('on', j===i); t.setAttribute('aria-selected', j===i); });
+    const bi = prog.querySelector('i'); bi.classList.remove('run'); void bi.offsetWidth; if(!stopped) bi.classList.add('run');
+  }
+  function stop(){ stopped = true; clearInterval(timer); prog.style.visibility='hidden'; }
+  show(0);
+  // only start rotating once the section is actually on screen
+  const io2 = new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting && !timer && !stopped){ show(cur); prog.querySelector('i').classList.add('run'); timer = setInterval(()=>show((cur+1)%feats.length), 7000); } }); },{threshold:.3});
+  io2.observe(wrap);
 })();
 
 // scroll reveal
