@@ -287,6 +287,33 @@ header.scrolled{background:rgba(10,11,14,.92);backdrop-filter:blur(12px);padding
 .chip-info b{color:var(--txt)}
 
 /* ---------- quotation ---------- */
+/* ---------- AI agent demo ---------- */
+.ai{margin-top:36px;background:var(--char);border-radius:20px;padding:26px;color:#fff}
+.ai-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.ai-tabs button{font-family:var(--sans);font-size:14px;font-weight:700;padding:10px 18px;border-radius:99px;border:1px solid #454954;background:transparent;color:#C9CBD1;cursor:pointer;transition:all .2s}
+.ai-tabs button.on{background:#fff;color:var(--black);border-color:#fff}
+.ai-grid{display:grid;grid-template-columns:1fr 50px 1.1fr;gap:16px;align-items:start}
+@media(max-width:860px){.ai-grid{grid-template-columns:1fr}.ai-arrow{transform:rotate(90deg);justify-self:center}}
+.ai small{display:block;font-size:11.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#A9ACB5;margin-bottom:10px}
+.ai-input{background:#1D2026;border-radius:14px;padding:18px;font-size:15.5px;line-height:1.6;min-height:150px;color:#E6E7EA;margin-bottom:16px}
+.ai-input .wa{display:block;background:#D9FDD3;color:#111B21;border-radius:10px;padding:8px 12px;margin-bottom:7px;max-width:88%;font-size:14px}
+.ai-input .wa.mine{background:#fff;margin-left:auto}
+.ai-input .ctx{display:block;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--peach);margin-bottom:8px}
+.ai-arrow{font-family:var(--display);font-size:40px;color:var(--red);align-self:center;text-align:center}
+.ai-cards{display:grid;gap:10px;min-height:150px}
+.ai-wait{color:#8D909A;font-size:15px;padding:18px;border:1.5px dashed #454954;border-radius:14px}
+.ai-card{border-radius:14px;padding:14px 16px;color:#17191E;opacity:0;transform:translateY(12px) scale(.96);animation:aiIn .45s var(--ease) forwards}
+.ai-card b{display:block;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:4px;opacity:.7}
+.ai-card span{font-size:15px;font-weight:600;line-height:1.45}
+.ai-card.c{background:var(--mint)}.ai-card.n{background:var(--sand)}.ai-card.t{background:var(--peach)}.ai-card.s{background:#fff}
+@keyframes aiIn{to{opacity:1;transform:none}}
+.ai-think{display:flex;gap:6px;padding:18px}.ai-think i{width:9px;height:9px;border-radius:99px;background:var(--red);animation:dot 1s infinite}
+.ai-think i:nth-child(2){animation-delay:.15s}.ai-think i:nth-child(3){animation-delay:.3s}
+@keyframes dot{0%,100%{opacity:.25}50%{opacity:1}}
+.ai-can{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px}
+.ai-can span{font-size:14px;font-weight:700;padding:9px 16px;border-radius:99px;background:#fff;border:1px solid var(--line)}
+.ai-can span::before{content:'✓ ';color:var(--green);font-weight:900}
+
 /* ---------- live quotation builder ---------- */
 .qb{margin-top:40px;display:grid;grid-template-columns:.9fr 1.1fr;gap:26px;align-items:start}
 @media(max-width:860px){.qb{grid-template-columns:1fr}}
@@ -677,6 +704,37 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </div>
 </section>
 
+<!-- 7b. AI AGENT: interactive -->
+<section id="ai" class="pg-light">
+  <div class="wrap">
+    <div class="kick rv">The AI agent</div>
+    <h2 class="dh rv">Just say it.<br><em>It does the typing.</em></h2>
+    <p class="lede rv">Speak a note, paste a WhatsApp chat, or type a line inside a customer's record. Kriya's AI agent works out what it is and files it: a contact, a note, a summary or a task. <b>Pick one and press run.</b></p>
+    <div class="ai rv" id="ai-demo">
+      <div class="ai-tabs" role="tablist">
+        <button type="button" class="on" data-k="voice">🎙 Voice note</button>
+        <button type="button" data-k="wa">💬 WhatsApp chat</button>
+        <button type="button" data-k="rec">⌨️ Inside a record</button>
+      </div>
+      <div class="ai-grid">
+        <div class="ai-in">
+          <small id="aiInLab">You say</small>
+          <div class="ai-input" id="aiInput"></div>
+          <button type="button" class="btn btn-red" id="aiRun">▶ Run the AI agent</button>
+        </div>
+        <div class="ai-arrow" aria-hidden="true">→</div>
+        <div class="ai-out">
+          <small>Kriya files it as</small>
+          <div class="ai-cards" id="aiOut" aria-live="polite"><p class="ai-wait">Press run to see it work.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="ai-can rv">
+      <span>Captures contacts</span><span>Writes notes</span><span>Creates dated tasks</span><span>Summarises WhatsApp chats</span><span>Reads business cards and enquiry forms</span><span>Never creates duplicates</span>
+    </div>
+  </div>
+</section>
+
 <!-- 8. QUOTATION (catalogue page 6) -->
 <section id="quote" class="pg-dark">
   <div class="wrap">
@@ -979,6 +1037,41 @@ if(matchMedia('(hover:hover) and (pointer:fine)').matches && !matchMedia('(prefe
 (function(){
   const docs=[...document.querySelectorAll('.qdoc')];
   docs.forEach(d=>d.addEventListener('click',()=>{ docs.forEach(x=>{ x.style.zIndex=''; x.classList.remove('front'); }); d.style.zIndex=5; d.classList.add('front'); }));
+})();
+
+// ---------- AI agent demo ----------
+(function(){
+  const input=document.getElementById('aiInput'), out=document.getElementById('aiOut'), lab=document.getElementById('aiInLab'), run=document.getElementById('aiRun');
+  if(!input) return;
+  const demos={
+    voice:{lab:'You say',
+      in:'"Met Sharma ji today, architect, referred by Mehta. Needs a quote for 3 sites. Follow up Friday."',
+      out:[['c','Contact captured','Sharma ji · Architect · referred by Mehta'],['n','Note','Needs a quotation for 3 sites'],['t','Task','Follow up with Sharma ji, Friday'],['s','Lead','Marked warm, source: referral']]},
+    wa:{lab:'You paste a WhatsApp chat',
+      in:'<span class="wa">Hi, need price for 20 units of the 2‑door model</span><span class="wa">Delivery before 15th possible?</span><span class="wa mine">Checking, will revert today</span><span class="wa">Also send brochure pls</span>',
+      out:[['s','WhatsApp summary','Wants price for 20 units (2‑door model), delivery before the 15th, asked for a brochure'],['n','Note','Saved on the customer\'s record, with the chat date'],['t','Task','Send quote and brochure today']]},
+    rec:{lab:'Inside Mehta Traders\' record, you type',
+      in:'<span class="ctx">Mehta Traders · existing customer</span>"Spoke to him. Comparing us with two other vendors. Call back Monday with the revised rate."',
+      out:[['n','Note, no duplicate','Added to Mehta Traders: comparing with two other vendors'],['t','Task','Call Mehta Traders Monday with the revised rate'],['s','Status','Quotation stage: negotiating']]}
+  };
+  let cur='voice', timer=null;
+  function load(k){
+    cur=k; clearTimeout(timer);
+    document.querySelectorAll('.ai-tabs button').forEach(b=>b.classList.toggle('on',b.dataset.k===k));
+    lab.textContent=demos[k].lab; input.innerHTML=demos[k].in;
+    out.innerHTML='<p class="ai-wait">Press run to see it work.</p>'; run.textContent='▶ Run the AI agent';
+  }
+  function go(){
+    clearTimeout(timer);
+    out.innerHTML='<div class="ai-think"><i></i><i></i><i></i></div>';
+    timer=setTimeout(()=>{
+      out.innerHTML=demos[cur].out.map((c,i)=>'<div class="ai-card '+c[0]+'" style="animation-delay:'+(i*.25)+'s"><b>'+c[1]+'</b><span>'+c[2]+'</span></div>').join('');
+      run.textContent='↻ Run again';
+    },900);
+  }
+  document.querySelectorAll('.ai-tabs button').forEach(b=>b.addEventListener('click',()=>load(b.dataset.k)));
+  run.addEventListener('click',go);
+  load('voice');
 })();
 
 // ---------- live quotation builder ----------
