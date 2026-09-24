@@ -69,6 +69,11 @@ section{padding:100px 0;position:relative}
 .rv.in{opacity:1;transform:none}
 .rv2{transition-delay:.1s}.rv3{transition-delay:.2s}.rv4{transition-delay:.3s}
 
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--red);z-index:120;pointer-events:none}
+.qdoc{cursor:pointer}
+.qdoc.front{box-shadow:0 40px 80px -24px rgba(0,0,0,.95),0 0 0 3px var(--red)}
+.fix,.want-card,.cs,.step3,.lr-box{transition:transform .35s var(--ease),box-shadow .3s}
+
 /* ---------- header ---------- */
 header{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 0;transition:background .3s,padding .3s,border-color .3s;border-bottom:1px solid transparent}
 header.scrolled{background:rgba(10,11,14,.92);backdrop-filter:blur(12px);padding:11px 0;border-color:var(--lline)}
@@ -134,6 +139,16 @@ header.scrolled{background:rgba(10,11,14,.92);backdrop-filter:blur(12px);padding
 .pain-row h3{font-size:19px;font-weight:800;letter-spacing:-.01em;margin-bottom:6px}
 .pain-row p{color:var(--grey);font-size:15.5px;line-height:1.65;max-width:720px}
 @media(max-width:620px){.pain-row{grid-template-columns:52px 1fr}.pain-num{font-size:34px}}
+.pain-row{grid-template-columns:80px 1fr auto;align-items:start;cursor:pointer}
+@media(max-width:620px){.pain-row{grid-template-columns:52px 1fr}.pain-row .me{grid-column:2;justify-self:start;margin-top:8px}}
+.me{font-family:var(--sans);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:9px 14px;border-radius:99px;border:2px solid var(--txt);background:transparent;color:var(--txt);cursor:pointer;white-space:nowrap;transition:all .2s var(--ease)}
+.me:hover{background:var(--txt);color:#fff}
+.pain-row.on{background:rgba(224,48,74,.06)}
+.pain-row.on .me{background:var(--red);border-color:var(--red);color:#fff}
+.pain-row.on h3{color:#BE1D36}
+.pain-count{margin-top:22px;font-size:16px;color:var(--grey);min-height:26px}
+.pain-count b{color:var(--txt)}
+.pain-count a{color:#BE1D36;font-weight:800;border-bottom:1.5px solid currentColor}
 .dark-note{margin-top:40px;background:var(--char);color:#E6E5E1;border-radius:16px;padding:30px 34px;font-size:17px;line-height:1.65}
 .dark-note b{color:var(--peach)}
 @media(max-width:620px){.dark-note{padding:24px 22px;font-size:15.5px}}
@@ -146,9 +161,19 @@ header.scrolled{background:rgba(10,11,14,.92);backdrop-filter:blur(12px);padding
 .leak-q b{display:block;font-size:17px;font-weight:700;line-height:1.35}
 .leak-q span{display:block;font-size:14px;color:var(--grey);margin-top:3px}
 .leak-q .leak-letter{display:flex;color:#fff;font-size:14px;margin:0}
-.leak-q input{width:100%;height:50px;border:2px solid var(--txt);border-radius:12px;padding:0 14px;font-family:var(--sans);font-size:18px;font-weight:700;color:var(--txt);background:#fff;font-variant-numeric:tabular-nums}
-.leak-q input:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 4px rgba(224,48,74,.15)}
-@media(max-width:620px){.leak-form{padding:6px 18px}.leak-q{grid-template-columns:34px 1fr;gap:12px}.leak-q input{grid-column:2}.leak-letter{width:30px;height:30px;font-size:13px}.leak-q b{font-size:15.5px}}
+.leak-q{grid-template-columns:42px 1fr 150px;row-gap:12px}
+.leak-out{justify-self:end;min-width:120px;text-align:center;font-family:var(--display);font-size:30px;line-height:1;padding:10px 14px;border:2px solid var(--txt);border-radius:12px;font-variant-numeric:tabular-nums;transition:color .2s,border-color .2s}
+.leak-q.hot .leak-out{color:var(--red);border-color:var(--red)}
+.leak-q input[type=range]{grid-column:2/-1;width:100%;-webkit-appearance:none;appearance:none;height:10px;border-radius:99px;background:linear-gradient(to right,var(--red) var(--p,50%),#E4E1DA var(--p,50%));cursor:pointer;outline:none}
+.leak-q input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:99px;background:#fff;border:3px solid var(--black);box-shadow:0 4px 10px rgba(0,0,0,.25);transition:transform .15s}
+.leak-q input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:99px;background:#fff;border:3px solid var(--black)}
+.leak-q input[type=range]:active::-webkit-slider-thumb{transform:scale(1.2)}
+.leak-q input[type=range]:focus-visible{box-shadow:0 0 0 4px rgba(224,48,74,.25)}
+.leak-meter{margin-top:18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.lm-bar{flex:1;min-width:200px;height:14px;border-radius:99px;background:var(--mint);overflow:hidden}
+.lm-bar i{display:block;height:100%;width:25%;background:repeating-linear-gradient(-45deg,var(--red) 0 10px,#C8243D 10px 20px);transition:width .4s var(--ease)}
+.leak-meter span{font-size:14.5px;font-weight:700;color:var(--txt)}
+@media(max-width:620px){.leak-form{padding:6px 18px}.leak-q{grid-template-columns:34px 1fr auto;gap:10px}.leak-out{min-width:0;font-size:22px;padding:8px 10px}.leak-letter{width:30px;height:30px;font-size:13px}.leak-q b{font-size:15px}.leak-q>span:nth-child(2) span{display:none}.leak-q input[type=range]{grid-column:1/-1}}
 .leak-results{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
 @media(max-width:720px){.leak-results{grid-template-columns:1fr}}
 .lr-box{border-radius:18px;padding:28px 30px}
@@ -160,15 +185,21 @@ header.scrolled{background:rgba(10,11,14,.92);backdrop-filter:blur(12px);padding
 .lr-dark p{color:#D5D6DA;font-size:15px;line-height:1.6}
 .lr-peach{background:var(--peach);color:#2A1606}
 .lr-peach small{color:#6B3E1C}
+.lr-peach{transition:transform .3s var(--ease)}
 .lr-amount{font-family:var(--display);font-size:clamp(40px,6vw,56px);line-height:1;font-variant-numeric:tabular-nums}
 .lr-amount span{font-size:.62em}
 .lr-peach p{margin-top:12px;font-size:15px;line-height:1.55}
 .leak-bold{margin-top:26px;font-size:16px;font-weight:800;color:var(--txt)}
 .leak-sub{color:var(--grey);font-size:15.5px;margin-top:4px}
+.proof{margin-top:26px;display:flex;align-items:center;gap:24px;background:var(--black);color:#D5D6DA;border-radius:18px;padding:24px 30px}
+.proof-n{font-family:var(--display);font-size:clamp(48px,7vw,72px);line-height:.9;color:var(--peach);flex-shrink:0}
+.proof p{font-size:16px;line-height:1.6}
+.proof b{color:#fff}
+@media(max-width:620px){.proof{flex-direction:column;align-items:flex-start;gap:10px;padding:22px}}
 .red-box{margin-top:30px;background:var(--red);color:#fff;border-radius:18px;padding:30px 32px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
 .red-box div{flex:1;min-width:250px}
 .red-box h3{font-size:21px;font-weight:800;margin-bottom:6px}
-.red-box p{font-size:16px;line-height:1.55;color:#FFE9EC}
+.red-box p{font-size:16px;line-height:1.55;color:#fff}
 
 /* ---------- what you want ---------- */
 .want-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
@@ -209,6 +240,12 @@ header.scrolled{background:rgba(10,11,14,.92);backdrop-filter:blur(12px);padding
 .fit-card li::before{font-weight:900;flex-shrink:0}
 .fit-card.yes li::before{content:'✓';color:var(--green)}
 .fit-card.no li::before{content:'✕';color:var(--red)}
+#fitYes li{cursor:pointer;border-radius:8px;transition:background .2s,padding .2s}
+#fitYes li::before{content:'';width:20px;height:20px;border-radius:6px;border:2px solid #9AA39E;flex-shrink:0;transform:translateY(1px);transition:all .2s}
+#fitYes li:hover{background:rgba(30,122,79,.06)}
+#fitYes li.on{background:rgba(30,122,79,.09);padding-left:10px}
+#fitYes li.on::before{content:'✓';border-color:var(--green);background:var(--green);color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center}
+.fit-verdict{margin-top:14px;font-size:15.5px;font-weight:800;color:var(--green);min-height:24px}
 .fit-card .note{margin-top:12px;font-size:14px;color:var(--grey);font-style:italic}
 .founder{margin-top:40px;background:var(--char);border-radius:18px;padding:32px 36px;display:grid;grid-template-columns:120px 1fr;gap:30px;align-items:center;color:#DCDDE1}
 .founder img{width:120px;height:120px;border-radius:16px;object-fit:cover}
@@ -234,6 +271,14 @@ header.scrolled{background:rgba(10,11,14,.92);backdrop-filter:blur(12px);padding
 .fx2{background:var(--mint);color:#13241B}.fx2 q{background:rgba(19,36,27,.08)}
 .fx3{background:var(--peach);color:#2A1606}
 .fx4{background:var(--red);color:#fff}
+.demo-btn{margin-top:16px;font-family:var(--sans);font-size:12.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--red);color:#fff;border:none;border-radius:99px;padding:10px 18px;cursor:pointer;transition:transform .2s}
+.demo-btn:hover{transform:translateY(-2px)}
+.cap-out{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;min-height:0}
+.cap-out span{font-size:13px;font-weight:700;padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);opacity:0;transform:translateY(8px) scale(.9);transition:opacity .35s var(--ease),transform .35s var(--ease)}
+.cap-out span.hot{background:rgba(242,185,152,.2);border-color:rgba(242,185,152,.5)}
+.cap-out span.task{background:var(--mint);color:#13241B;border-color:var(--mint)}
+.cap-out.go span{opacity:1;transform:none}
+.cap-out.go span:nth-child(2){transition-delay:.25s}.cap-out.go span:nth-child(3){transition-delay:.5s}.cap-out.go span:nth-child(4){transition-delay:.75s}.cap-out.go span:nth-child(5){transition-delay:1s}
 .chips{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .chip{font-family:var(--sans);font-size:14px;font-weight:700;padding:9px 16px;border-radius:99px;background:#fff;border:1px solid var(--line);color:var(--txt);cursor:pointer;transition:all .2s}
 .chip:hover,.chip.on{background:var(--txt);color:#fff;border-color:var(--txt)}
@@ -299,6 +344,22 @@ header.scrolled{background:rgba(10,11,14,.92);backdrop-filter:blur(12px);padding
 .fee-mint li{list-style:none;display:flex;gap:12px;align-items:baseline;padding:6px 0;font-size:16px}
 .fee-mint li::before{content:'';width:9px;height:9px;border-radius:99px;background:#13241B;flex-shrink:0;transform:translateY(-1px)}
 
+.team{margin-top:22px;background:var(--card);border-radius:18px;padding:26px 30px}
+.team-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px}
+.team-top b{font-size:16px;font-weight:800}
+.team-top output{font-family:var(--display);font-size:30px;color:var(--red)}
+.team input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:10px;border-radius:99px;background:linear-gradient(to right,var(--red) var(--p,8%),#E4E1DA var(--p,8%));cursor:pointer}
+.team input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:99px;background:#fff;border:3px solid var(--black);box-shadow:0 4px 10px rgba(0,0,0,.25)}
+.team input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:99px;background:#fff;border:3px solid var(--black)}
+.team-bars{margin-top:22px;display:grid;gap:12px}
+.tb{display:grid;grid-template-columns:150px 1fr 56px;align-items:center;gap:12px;font-size:14.5px;font-weight:700}
+.tb-track{height:26px;border-radius:8px;background:#F0EEE9;overflow:hidden}
+.tb-track i{display:block;height:100%;width:10%;background:var(--char);border-radius:8px;transition:width .45s var(--ease)}
+.flat-track{background:var(--mint);color:#13241B;font-size:12.5px;font-weight:800;letter-spacing:.06em;display:flex;align-items:center;padding:0 12px}
+.tb em{font-style:normal;font-family:var(--display);font-size:20px;text-align:right}
+.team-note{margin-top:14px;color:var(--grey);font-size:15px}
+@media(max-width:620px){.team{padding:22px 18px}.tb{grid-template-columns:96px 1fr 44px;font-size:13px}}
+
 /* ---------- before you decide ---------- */
 .honest{display:grid;grid-template-columns:1fr 1fr;gap:22px}
 @media(max-width:760px){.honest{grid-template-columns:1fr}}
@@ -348,6 +409,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </head>
 <body>
 
+<div id="progress" aria-hidden="true"></div>
 <header id="hdr">
   <div class="wrap nav">
     <a href="#top" class="brand" aria-label="Kriya"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2709 740" width="120" height="33"><path d="M487.6546762589928 740.0 201.23741007194246 408.86330935251794V740.0H79.85611510791367V0.0H201.23741007194246V337.5251798561151L488.7194244604317 0.0H640.9784172661871L319.42446043165467 370.53237410071944L646.3021582733813 740.0Z" fill="#FFFFFF"/><path d="M1138.2158273381297 740.0 967.8561151079136 444.0H875.2230215827338V740.0H753.841726618705V0.0H1009.3812949640288Q1094.5611510791368 0.0 1153.6546762589928 29.81294964028774Q1212.7482014388488 59.62589928057548 1242.0287769784172 109.66906474820138Q1271.3093525179856 159.71223021582728 1271.3093525179856 221.4676258992805Q1271.3093525179856 293.8705035971223 1229.2517985611512 352.9640287769784Q1187.1942446043167 412.0575539568345 1099.884892086331 433.3525179856115L1283.021582733813 740.0ZM875.2230215827338 347.1079136690647H1009.3812949640288Q1077.525179856115 347.1079136690647 1112.1294964028775 313.03597122302153Q1146.7338129496402 278.9640287769784 1146.7338129496402 221.4676258992805Q1146.7338129496402 163.97122302158266 1112.6618705035971 131.4964028776978Q1078.589928057554 99.02158273381292 1009.3812949640288 99.02158273381292H875.2230215827338Z" fill="#FFFFFF"/><path d="M1514.423021582734 124.0V740.0H1413.381294964029V124.0Z" fill="#FFFFFF"/><path d="M2387.897841726619 88H2265.897841726619V740H2160.897841726619V540Q2130.897841726619 584 2077.897841726619 610.5Q2024.897841726619 637 1951.897841726619 637Q1824.897841726619 637 1755.397841726619 561.0Q1685.897841726619 485 1685.897841726619 355Q1685.897841726619 329 1688.897841726619 304H1701.897841726619Q1787.897841726619 304 1829.897841726619 267.5Q1871.897841726619 231 1871.897841726619 150V88H1596.897841726619V0H2387.897841726619ZM2160.897841726619 88H1975.897841726619V168Q1975.897841726619 350 1788.897841726619 361V365Q1788.897841726619 449 1837.897841726619 499.0Q1886.897841726619 549 1973.897841726619 549Q2026.897841726619 549 2069.897841726619 526.0Q2112.897841726619 503 2136.897841726619 462.0Q2160.897841726619 421 2160.897841726619 369Z" fill="#FFFFFF"/><path d="M2461.897841726619 740V88H2339.897841726619V0H2688.897841726619V88H2566.897841726619V740Z" fill="#FFFFFF"/><rect x="2432.9" y="0" width="260.0" height="90" fill="#E6C45A"/><rect x="1413.4" y="0.0" width="101.0" height="90" fill="#FFFFFF"/></svg></a>
@@ -411,6 +473,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <div class="pain-row rv"><div class="pain-num">04</div><div><h3>The business that lives in one head</h3><p>One person knows every customer, every price, every hesitation. The day they take leave, the whole business slows to their reply speed.</p></div></div>
       <div class="pain-row rv"><div class="pain-num">05</div><div><h3>The customer who simply went quiet</h3><p>Bought elsewhere? Decided against it? Needed one more nudge on a Tuesday? Without the answer, nothing improves next quarter.</p></div></div>
     </div>
+    <div class="pain-count" id="painCount" aria-live="polite">Tap <b>That's me</b> on any that sound familiar.</div>
     <div class="dark-note rv">None of this is a discipline problem. Everyone in this position is working hard. <b>It's a tooling problem</b>, and most tools built to fix it were designed for a forty‑person sales floor abroad, not for a business like yours.</div>
   </div>
 </section>
@@ -420,19 +483,21 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <div class="kick rv">The Enquiry Leak Check</div>
     <h2 class="dh rv">Do the maths once.<br><em>It's uncomfortable.</em></h2>
-    <p class="lede rv">Four honest numbers from last month. Nobody else sees them, and nothing is sent anywhere.</p>
+    <p class="lede rv">Drag the four sliders to match last month. Nobody else sees them, and nothing is sent anywhere.</p>
     <div class="leak-form rv" style="margin-top:34px">
-      <label class="leak-q"><span class="leak-letter">A</span><span><b>How many enquiries came in last month?</b><span>WhatsApp, calls, walk‑ins, IndiaMART, referrals. All of them.</span></span><input type="number" inputmode="numeric" min="0" id="lA" value="40" aria-label="A: enquiries last month"></label>
-      <label class="leak-q"><span class="leak-letter">B</span><span><b>How many of them never got a second follow‑up?</b><span>They asked, you replied once, and then nobody called again.</span></span><input type="number" inputmode="numeric" min="0" id="lB" value="10" aria-label="B: never followed up"></label>
-      <label class="leak-q"><span class="leak-letter">C</span><span><b>How many of those could have become an order with one more call?</b><span>Your honest guess. If unsure, take 1 in every 5 of B.</span></span><input type="number" inputmode="numeric" min="0" id="lC" value="2" aria-label="C: could have become an order"></label>
-      <label class="leak-q"><span class="leak-letter">D</span><span><b>Your average order value, in rupees</b><span>A typical deal, not your biggest one.</span></span><input type="number" inputmode="numeric" min="0" step="1000" id="lD" value="25000" aria-label="D: average order value in rupees"></label>
+      <div class="leak-q"><span class="leak-letter">A</span><span><b>How many enquiries came in last month?</b><span>WhatsApp, calls, walk‑ins, IndiaMART, referrals. All of them.</span></span><output class="leak-out" id="oA">40</output><input type="range" id="lA" min="5" max="500" step="5" value="40" aria-label="A: enquiries last month"></div>
+      <div class="leak-q"><span class="leak-letter">B</span><span><b>How many of them never got a second follow‑up?</b><span>They asked, you replied once, and then nobody called again.</span></span><output class="leak-out" id="oB">10</output><input type="range" id="lB" min="0" max="40" step="1" value="10" aria-label="B: never followed up"></div>
+      <div class="leak-q"><span class="leak-letter">C</span><span><b>How many of those could have become an order with one more call?</b><span id="cHint">Your honest guess. Set to 1 in every 5 of B until you move it.</span></span><output class="leak-out" id="oC">2</output><input type="range" id="lC" min="0" max="10" step="1" value="2" aria-label="C: could have become an order"></div>
+      <div class="leak-q"><span class="leak-letter">D</span><span><b>Your average order value</b><span>A typical deal, not your biggest one.</span></span><output class="leak-out" id="oD">₹25,000</output><input type="range" id="lD" min="5000" max="1000000" step="5000" value="25000" aria-label="D: average order value in rupees"></div>
     </div>
+    <div class="leak-meter rv" aria-hidden="true"><div class="lm-bar"><i id="lmFill"></i></div><span id="lmText">25% of your enquiries never got a second follow‑up</span></div>
     <div class="leak-results">
       <div class="lr-box lr-dark rv"><small>Lost every year</small><div class="lr-formula">C<i>×</i>D<i>×</i>12</div><p>Orders you could have won last month, times your average order, times twelve months. Money you had already earned the right to, and let walk out of the door.</p></div>
       <div class="lr-box lr-peach rv rv2" aria-live="polite"><small>Your number</small><div class="lr-amount" id="lYear">₹6,00,000 <span>a year</span></div><p id="lWhy">40 enquiries (A). 10 never followed up (B). 2 of those could have closed (C). ₹25,000 average order (D). So 2 × ₹25,000 × 12.</p></div>
     </div>
     <p class="leak-bold rv">You don't need Kriya to win more deals. You need it to stop losing the ones you had already earned.</p>
-    <p class="leak-sub rv">The number above is an estimate. One business I looked at had about 13,900 enquiries in its records, and fewer than 2% had ever had a second follow‑up.</p>
+    <p class="leak-sub rv">The number above is an estimate. The real one depends on where your enquiries actually slip.</p>
+    <div class="proof rv"><div class="proof-n">13,900</div><p><b>A real example.</b> One business I looked at had about 13,900 enquiries in its records. <b>Fewer than 2%</b> had ever had a second follow‑up. Nobody was lazy. Nothing reminded anyone.</p></div>
     <div class="red-box rv">
       <div><h3>Want to see it fixed?</h3><p>I'll set up a free working dashboard with your own leads, so you can see every enquiry and follow‑up in one place before you decide anything.</p></div>
       <a class="btn btn-white btn-wrap" href="https://wa.me/919874700058?text=Hi%20Akshay%2C%20I%20checked%20my%20enquiry%20leak%20on%20your%20site.%20I%27d%20like%20to%20talk%20about%20a%20free%20dashboard." target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3z"/></svg> Get your free dashboard</a>
@@ -474,12 +539,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <div class="kick rv">Is this for you?</div>
     <h2 class="dh rv">Built for one kind<br>of business. <em>Maybe yours.</em></h2>
     <div class="fit-grid" style="margin-top:34px">
-      <div class="fit-card yes rv"><small>It's for you if</small><ul>
+      <div class="fit-card yes rv" id="fitYes"><small>It's for you if · tap what's true</small><ul>
         <li>You run a business of roughly 3 to 50 people</li>
         <li>You sell through enquiries, quotations and follow‑ups, not a checkout page</li>
         <li>Enquiries come in on WhatsApp, calls, walk‑ins, IndiaMART or referrals</li>
         <li>You're a distributor, manufacturer, trader, dealer, interiors or furnishing firm, AV or industrial supplier</li>
-      </ul></div>
+      </ul><p class="fit-verdict" id="fitVerdict" aria-live="polite"></p></div>
       <div class="fit-card no rv rv2"><small>It's probably not for you if</small><ul>
         <li>You get fewer than 10 enquiries a month</li>
         <li>Your team already uses a CRM properly, every day</li>
@@ -514,7 +579,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <div class="kick rv">How Kriya fixes it</div>
     <h2 class="dh rv">Four things<br>that <em>stop the leak.</em></h2>
     <div class="fix-grid" style="margin-top:40px">
-      <div class="fix fx1 rv"><small>01 · Capture</small><h3>Nothing gets lost on the way in</h3><p>Speak, type, or paste a screenshot of a WhatsApp chat, a business card or an enquiry form. Kriya reads it and fills in the contact: name, number, requirement, urgency. Inside a customer's record the same words become a note, never a duplicate.</p><q>"Met Sharma ji, architect, needs a quote for 3 sites, follow up Friday."</q></div>
+      <div class="fix fx1 rv"><small>01 · Capture</small><h3>Nothing gets lost on the way in</h3><p>Speak, type, or paste a screenshot of a WhatsApp chat, a business card or an enquiry form. Kriya reads it and fills in the contact: name, number, requirement, urgency. Inside a customer's record the same words become a note, never a duplicate.</p><q>"Met Sharma ji, architect, needs a quote for 3 sites, follow up Friday."</q>
+        <button type="button" class="demo-btn" id="capBtn">▶ Watch Kriya read it</button>
+        <div class="cap-out" id="capOut" aria-live="polite">
+          <span>✓ Contact: Sharma ji</span><span>Architect</span><span>Needs: quote, 3 sites</span><span class="hot">🔥 Warm lead</span><span class="task">⏰ Task: follow up Friday</span>
+        </div></div>
       <div class="fix fx2 rv rv2"><small>02 · Follow up</small><h3>Nobody has to remember</h3><p>"Follow up in two days" becomes a dated task on the right person's screen. Every deal sits in a pipeline built around your own stages, and you can ask plain questions instead of building filters.</p><q>"Which quotations are still pending?" "Hot leads not contacted this week."</q></div>
       <div class="fix fx3 rv"><small>03 · Quote</small><h3>Quotations that win the room</h3><p>Tick items from your catalogue and Kriya builds a multi‑page proposal on your letterhead: cover, one clear investment figure, itemised list with photos, specifications, terms, team. Fix a product detail once and every future quote uses the better version.</p></div>
       <div class="fix fx4 rv rv2"><small>04 · Talk</small><h3>WhatsApp that feels like WhatsApp</h3><p>Message a customer from their record using your own number, in the same chat they already know. The conversation stays attached to the customer. Automated template messages can be added later if you want them.</p></div>
@@ -592,6 +661,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <li>Month to month, 30 days' notice</li>
       </ul>
     </div>
+    <div class="team rv">
+      <div class="team-top"><b>Drag your team size</b><output id="tN">5 people</output></div>
+      <input type="range" id="tR" min="1" max="50" value="5" aria-label="Team size">
+      <div class="team-bars">
+        <div class="tb"><span>A per‑person CRM</span><div class="tb-track"><i id="tbSeat"></i></div><em id="tbSeatX">5×</em></div>
+        <div class="tb"><span>Kriya</span><div class="tb-track flat-track">Same fee at any team size</div><em>Flat</em></div>
+      </div>
+      <p class="team-note" id="tNote">With 5 people, a per‑person bill is 5 times what one seat costs. Kriya's fee doesn't change when you hire.</p>
+    </div>
   </div>
 </section>
 
@@ -618,6 +696,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <div class="faq-item"><button class="faq-q">Why pay monthly when AI tools can build software now?<span class="plus"></span></button><div class="faq-a"><p>Building a demo and running production software for a real business are different problems. The monthly fee is for someone who owns the hosting, fixes it when it breaks, keeps your data safe and changes the system as your business changes.</p></div></div>
       <div class="faq-item"><button class="faq-q">How is this different from Zoho or Salesforce?<span class="plus"></span></button><div class="faq-a"><p>Both are serious products with capabilities Kriya doesn't have, especially at scale. They are built to suit every business, which means yours has to bend to fit. Kriya is shaped to you, with branded proposals, voice capture and a flat team fee as standard.</p></div></div>
       <div class="faq-item"><button class="faq-q">What if it's not right for my business?<span class="plus"></span></button><div class="faq-a"><p>Then I'll say so in the first conversation. I would rather lose the sale than find out together in month four.</p></div></div>
+      <div class="faq-item"><button class="faq-q">What does it cost?<span class="plus"></span></button><div class="faq-a"><p>One flat fee for your whole team, not per person, with hosting, backups, AI, support and training included. Every business is a different size and shape, so the number is confirmed in our conversation, before anything is built, not from a price table.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Is my data safe, and who can see it?<span class="plus"></span></button><div class="faq-a"><p>Your data stays yours. It's accessed only to give support you've asked for, never shared, and never used for anyone else. You can export everything, any time.</p></div></div>
       <div class="faq-item"><button class="faq-q">What does the free dashboard involve?<span class="plus"></span></button><div class="faq-a"><p>Message me on WhatsApp. After a short conversation, I set up a working version with your own leads and your own catalogue, free, so you can use it before you decide anything.</p></div></div>
       <div class="faq-item"><button class="faq-q">What happens to my existing data?<span class="plus"></span></button><div class="faq-a"><p>Excel sheets, old CRM exports and price lists come in as part of setup, with contacts, notes and original dates preserved. If your records live only in WhatsApp or a diary, that's normal too; most businesses start there.</p></div></div>
       <div class="faq-item"><button class="faq-q">Can I cancel?<span class="plus"></span></button><div class="faq-a"><p>Month to month, with 30 days' notice from either side. No long lock‑in.</p></div></div>
@@ -714,15 +794,110 @@ if(window.gsap && window.ScrollTrigger){
   const g=id=>document.getElementById(id);
   const A=g('lA'),B=g('lB'),C=g('lC'),D=g('lD');
   if(!A) return;
-  const n=el=>Math.max(0,Math.round(+el.value||0));
   const inr=v=>'₹'+Math.round(v).toLocaleString('en-IN');
-  function calc(){
-    const a=n(A),b=n(B),c=n(C),d=n(D);
-    g('lYear').innerHTML=inr(c*d*12)+' <span>a year</span>';
-    g('lWhy').textContent=a+' enquiries (A). '+b+' never followed up (B). '+c+' of those could have closed (C). '+inr(d)+' average order (D). So '+c+' × '+inr(d)+' × 12.';
+  let cTouched=false, shown=600000, raf=null;
+  const fill=el=>el.style.setProperty('--p',((el.value-el.min)/(el.max-el.min)*100)+'%');
+  function countTo(target){
+    cancelAnimationFrame(raf);
+    const from=shown, t0=performance.now();
+    const step=t=>{ const k=Math.min(1,(t-t0)/450), e=1-Math.pow(1-k,3);
+      shown=from+(target-from)*e; g('lYear').innerHTML=inr(shown)+' <span>a year</span>';
+      if(k<1) raf=requestAnimationFrame(step); };
+    raf=requestAnimationFrame(step);
+    // safety net: always land on the right number, even if animation frames are paused
+    clearTimeout(countTo.t); countTo.t=setTimeout(()=>{ cancelAnimationFrame(raf); shown=target; g('lYear').innerHTML=inr(target)+' <span>a year</span>'; },520);
   }
-  [A,B,C,D].forEach(el=>el.addEventListener('input',calc));
+  function calc(src){
+    // B can't exceed A, C can't exceed B
+    B.max=A.value; if(+B.value>+A.value) B.value=A.value;
+    C.max=Math.max(1,B.value); if(+C.value>+B.value) C.value=B.value;
+    if(!cTouched && src!==C) C.value=Math.round(B.value/5);
+    const a=+A.value,b=+B.value,c=+C.value,d=+D.value;
+    g('oA').textContent=a; g('oB').textContent=b; g('oC').textContent=c; g('oD').textContent=inr(d);
+    [A,B,C,D].forEach(fill);
+    const pct=a?Math.round(b/a*100):0;
+    g('lmFill').style.width=pct+'%';
+    g('lmText').textContent=pct+'% of your enquiries never got a second follow‑up';
+    B.closest('.leak-q').classList.toggle('hot',pct>=30);
+    countTo(c*d*12);
+    g('lWhy').textContent=a+' enquiries (A). '+b+' never followed up (B). '+c+' of those could have closed (C). '+inr(d)+' average order (D). So '+c+' × '+inr(d)+' × 12.';
+    g('cHint').textContent=cTouched?'Your honest guess.':'Set to 1 in every 5 of B until you move it.';
+  }
+  C.addEventListener('input',()=>{ cTouched=true; });
+  [A,B,C,D].forEach(el=>el.addEventListener('input',()=>calc(el)));
   calc();
+})();
+
+// ---------- is this for you: tap checklist ----------
+(function(){
+  const lis=[...document.querySelectorAll('#fitYes li')], v=document.getElementById('fitVerdict');
+  if(!lis.length) return;
+  const says=['','One is a start. Keep going.','Two out of four. Worth a look.','Three out of four. Kriya was built for businesses like yours.','All four. This is exactly who Kriya is for.'];
+  lis.forEach(li=>{ li.setAttribute('role','checkbox'); li.setAttribute('tabindex','0'); li.setAttribute('aria-checked','false');
+    const t=()=>{ const on=li.classList.toggle('on'); li.setAttribute('aria-checked',on); v.textContent=says[lis.filter(x=>x.classList.contains('on')).length]; };
+    li.addEventListener('click',t); li.addEventListener('keydown',e=>{ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); t(); } });
+  });
+})();
+
+// ---------- tilt cards toward the pointer (mouse only) ----------
+if(matchMedia('(hover:hover) and (pointer:fine)').matches && !matchMedia('(prefers-reduced-motion:reduce)').matches){
+  document.querySelectorAll('.fix,.want-card,.cs,.step3,.lr-box').forEach(el=>{
+    el.addEventListener('mousemove',e=>{ const r=el.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+      el.style.transform='perspective(900px) rotateY('+(x*7)+'deg) rotateX('+(-y*7)+'deg) translateY(-4px)'; });
+    el.addEventListener('mouseleave',()=>{ el.style.transform=''; });
+  });
+}
+
+// ---------- quotation pages: tap one to bring it forward ----------
+(function(){
+  const docs=[...document.querySelectorAll('.qdoc')];
+  docs.forEach(d=>d.addEventListener('click',()=>{ docs.forEach(x=>{ x.style.zIndex=''; x.classList.remove('front'); }); d.style.zIndex=5; d.classList.add('front'); }));
+})();
+
+// ---------- capture demo ----------
+(function(){
+  const b=document.getElementById('capBtn'), o=document.getElementById('capOut'); if(!b) return;
+  b.addEventListener('click',()=>{ o.classList.remove('go'); void o.offsetWidth; o.classList.add('go'); b.textContent='↻ Play again'; });
+})();
+
+// ---------- reading progress ----------
+(function(){
+  const bar=document.getElementById('progress'); if(!bar) return;
+  const upd=()=>{ const h=document.documentElement; bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'; };
+  window.addEventListener('scroll',upd,{passive:true}); upd();
+})();
+
+// ---------- team size: per-person vs flat (relative, no prices) ----------
+(function(){
+  const r=document.getElementById('tR'); if(!r) return;
+  const g=id=>document.getElementById(id);
+  function upd(){
+    const n=+r.value;
+    r.style.setProperty('--p',((n-1)/49*100)+'%');
+    g('tN').textContent=n+(n===1?' person':' people');
+    g('tbSeat').style.width=Math.max(2,n/50*100)+'%';
+    g('tbSeatX').textContent=n+'×';
+    g('tNote').textContent = n===1 ? 'Now drag it up, the way a growing business does.'
+      : 'With '+n+' people, a per‑person bill is '+n+' times what one seat costs. Kriya\'s fee doesn\'t change when you hire.';
+  }
+  r.addEventListener('input',upd); upd();
+})();
+
+// ---------- pain list: "That's me" ----------
+(function(){
+  const rows=[...document.querySelectorAll('.pain-row')], out=document.getElementById('painCount');
+  if(!rows.length) return;
+  rows.forEach(r=>{
+    const b=document.createElement('button'); b.type='button'; b.className='me'; b.textContent="That's me"; b.setAttribute('aria-pressed','false');
+    r.appendChild(b);
+    r.addEventListener('click',()=>{ const on=r.classList.toggle('on'); b.textContent=on?'✓ That\'s me':"That's me"; b.setAttribute('aria-pressed',on); update(); });
+  });
+  function update(){
+    const n=rows.filter(r=>r.classList.contains('on')).length;
+    out.innerHTML = !n ? 'Tap <b>That\'s me</b> on any that sound familiar.'
+      : n===rows.length ? '<b>All five.</b> You are not alone: that is most businesses. <a href="#leak">See what it costs you ↓</a>'
+      : '<b>'+n+' of '+rows.length+'</b> sound familiar. Each one is a leak. <a href="#leak">See what it costs you ↓</a>';
+  }
 })();
 
 // ---------- what you want: tap to pick, builds the WhatsApp message ----------
