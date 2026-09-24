@@ -75,9 +75,9 @@ header.scrolled{background:rgba(10,11,14,.92);backdrop-filter:blur(12px);padding
 .nav{display:flex;align-items:center;justify-content:space-between;gap:22px}
 .brand svg{height:26px;width:auto;display:block}
 .navlinks{display:flex;gap:26px}
-.navlinks a{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--lgrey);transition:color .2s}
+.navlinks a{white-space:nowrap;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--lgrey);transition:color .2s}
 .navlinks a:hover,.navlinks a.active{color:#fff}
-@media(max-width:900px){.navlinks{display:none}}
+@media(max-width:1060px){.navlinks{display:none}}
 
 /* ---------- hero: pinned scroll story ---------- */
 .story{position:relative;height:300vh;background:var(--black)}
@@ -145,6 +145,7 @@ header.scrolled{background:rgba(10,11,14,.92);backdrop-filter:blur(12px);padding
 .leak-letter{width:34px;height:34px;border-radius:99px;background:var(--black);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px}
 .leak-q b{display:block;font-size:17px;font-weight:700;line-height:1.35}
 .leak-q span{display:block;font-size:14px;color:var(--grey);margin-top:3px}
+.leak-q .leak-letter{display:flex;color:#fff;font-size:14px;margin:0}
 .leak-q input{width:100%;height:50px;border:2px solid var(--txt);border-radius:12px;padding:0 14px;font-family:var(--sans);font-size:18px;font-weight:700;color:var(--txt);background:#fff;font-variant-numeric:tabular-nums}
 .leak-q input:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 4px rgba(224,48,74,.15)}
 @media(max-width:620px){.leak-form{padding:6px 18px}.leak-q{grid-template-columns:34px 1fr;gap:12px}.leak-q input{grid-column:2}.leak-letter{width:30px;height:30px;font-size:13px}.leak-q b{font-size:15.5px}}
