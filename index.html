@@ -300,6 +300,19 @@ header.scrolled{background:rgba(10,11,14,.92);backdrop-filter:blur(12px);padding
 .qb-item.on{border-color:var(--red);background:#241A1D}
 .qb-chk{width:22px;height:22px;border-radius:6px;border:2px solid #555A66;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:transparent;transition:all .2s}
 .qb-item.on .qb-chk{background:var(--red);border-color:var(--red);color:#fff}
+.custom{margin:34px 0 40px;border:1px solid #33363E;border-left:6px solid var(--red);border-radius:16px;padding:26px 30px;background:#121419}
+.custom h3{font-family:var(--display);font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1;text-transform:uppercase;color:#fff;margin-bottom:8px}
+.custom p{color:#B4B7C0;font-size:15.5px;margin-bottom:14px}
+.custom ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 26px}
+@media(max-width:620px){.custom ul{grid-template-columns:1fr}.custom{padding:22px 20px}}
+.custom li{font-size:15px;color:#D5D6DA;padding-left:22px;position:relative}
+.custom li::before{content:'✓';position:absolute;left:0;color:var(--mint);font-weight:900}
+.custom li b{color:#fff}
+.qb-it{display:flex;align-items:center;gap:12px;min-width:0}
+.qb-thumb{width:42px;height:42px;flex-shrink:0;display:block}
+.qb-thumb svg{width:100%;height:100%;display:block;border-radius:10px}
+.qb-thumb.sm{width:34px;height:34px;animation:thumbIn .4s var(--ease)}
+@keyframes thumbIn{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
 .qb-item b{display:block;font-size:14.5px;color:#fff;font-weight:700}
 .qb-item span.p{font-size:12.5px;color:#8D909A}
 .qb-qty{display:flex;align-items:center;gap:6px;opacity:.35;pointer-events:none;transition:opacity .2s}
@@ -719,6 +732,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <p class="qb-time">⏱ Built in the time it took you to read this. The Excel version takes an evening.</p>
       </div>
     </div>
+    <div class="custom rv">
+      <h3>This is a demo. Yours is built around your brand.</h3>
+      <p>Every quotation is designed for the company sending it, not from a Kriya template:</p>
+      <ul>
+        <li><b>Your logo and letterhead</b>, in your brand colours and fonts</li>
+        <li><b>Your product photos</b>, pulled from your own catalogue</li>
+        <li><b>Your GST rates, units and discounts</b>, the way you price</li>
+        <li><b>Your terms, warranty and bank details</b></li>
+        <li><b>Your team page</b>, with photos and direct numbers</li>
+        <li><b>Your numbering and layout</b>, cover to appendix</li>
+      </ul>
+    </div>
     <div class="q-list">
       <div class="rv"><span>1</span><span><b>Cover</b> with your logo and the name of the proposal</span></div>
       <div class="rv"><span>2</span><span><b>The brief</b>: what you are proposing and why</span></div>
@@ -961,18 +986,28 @@ if(matchMedia('(hover:hover) and (pointer:fine)').matches && !matchMedia('(prefe
   const box=document.getElementById('qbItems'); if(!box) return;
   const g=id=>document.getElementById(id);
   const inr=v=>'₹'+Math.round(v).toLocaleString('en-IN');
+  // simple flat product thumbnails, drawn in the site palette
+  const svg=b=>'<svg viewBox="0 0 48 48" aria-hidden="true">'+b+'</svg>';
+  const pic={
+    sofa:svg('<rect width="48" height="48" rx="10" fill="#F2B998"/><rect x="9" y="16" width="30" height="12" rx="4" fill="#C9785A"/><rect x="6" y="22" width="36" height="11" rx="4" fill="#E0304A"/><rect x="8" y="33" width="3" height="5" rx="1" fill="#2B2E35"/><rect x="37" y="33" width="3" height="5" rx="1" fill="#2B2E35"/>'),
+    blinds:svg('<rect width="48" height="48" rx="10" fill="#CFE8DC"/><rect x="10" y="8" width="28" height="3" rx="1.5" fill="#2B2E35"/><g fill="#1E7A4F"><rect x="12" y="13" width="24" height="3" rx="1"/><rect x="12" y="18" width="24" height="3" rx="1"/><rect x="12" y="23" width="24" height="3" rx="1"/><rect x="12" y="28" width="24" height="3" rx="1"/></g><rect x="33" y="31" width="2" height="9" fill="#2B2E35"/>'),
+    lamp:svg('<rect width="48" height="48" rx="10" fill="#2B2E35"/><rect x="23" y="5" width="2" height="12" fill="#B4B7C0"/><path d="M12 30a12 12 0 0 1 24 0z" fill="#E8B84B"/><circle cx="24" cy="33" r="4" fill="#FFF3C4"/>'),
+    panels:svg('<rect width="48" height="48" rx="10" fill="#DDD8CF"/><g fill="#2B2E35"><rect x="9" y="9" width="8" height="30" rx="2"/><rect x="20" y="9" width="8" height="30" rx="2" opacity=".75"/><rect x="31" y="9" width="8" height="30" rx="2" opacity=".5"/></g>'),
+    install:svg('<rect width="48" height="48" rx="10" fill="#E0304A"/><path d="M31 12a7 7 0 0 0-8.5 9L12 31.5l4.5 4.5L27 25.5a7 7 0 0 0 9-8.5l-4 4-4.5-1-1-4.5z" fill="#fff"/>'),
+    amc:svg('<rect width="48" height="48" rx="10" fill="#1E7A4F"/><path d="M24 9l12 5v9c0 8-5 13-12 16-7-3-12-8-12-16v-9z" fill="#CFE8DC"/><path d="M18 24l4 4 8-8" stroke="#1E7A4F" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>')
+  };
   const items=[
-    {n:'Modular sofa, 3‑seater',p:84000,q:1,on:true},
-    {n:'Motorised blinds, per window',p:18500,q:4,on:true},
-    {n:'Designer pendant light',p:12400,q:2,on:true},
-    {n:'Acoustic wall panels, 100 sq ft',p:65000,q:1,on:false},
-    {n:'Installation and commissioning',p:15000,q:1,on:false},
-    {n:'Annual maintenance',p:9000,q:1,on:false}
+    {n:'Modular sofa, 3‑seater',p:84000,q:1,on:true,img:pic.sofa},
+    {n:'Motorised blinds, per window',p:18500,q:4,on:true,img:pic.blinds},
+    {n:'Designer pendant light',p:12400,q:2,on:true,img:pic.lamp},
+    {n:'Acoustic wall panels, 100 sq ft',p:65000,q:1,on:false,img:pic.panels},
+    {n:'Installation and commissioning',p:15000,q:1,on:false,img:pic.install},
+    {n:'Annual maintenance',p:9000,q:1,on:false,img:pic.amc}
   ];
   let last=null;
   items.forEach((it,i)=>{
     const el=document.createElement('div'); el.className='qb-item'+(it.on?' on':''); el.setAttribute('role','checkbox'); el.setAttribute('tabindex','0');
-    el.innerHTML='<span class="qb-chk">✓</span><span><b>'+it.n+'</b><span class="p">'+inr(it.p)+' each</span></span><span class="qb-qty"><button type="button" aria-label="Fewer">−</button><em>'+it.q+'</em><button type="button" aria-label="More">+</button></span>';
+    el.innerHTML='<span class="qb-chk">✓</span><span class="qb-it"><span class="qb-thumb">'+it.img+'</span><span><b>'+it.n+'</b><span class="p">'+inr(it.p)+' each</span></span></span><span class="qb-qty"><button type="button" aria-label="Fewer">−</button><em>'+it.q+'</em><button type="button" aria-label="More">+</button></span>';
     const [minus,plus]=el.querySelectorAll('.qb-qty button'), qEl=el.querySelector('em');
     const toggle=()=>{ it.on=!it.on; el.classList.toggle('on',it.on); last=it.on?i:null; render(); };
     el.addEventListener('click',e=>{ if(e.target.closest('.qb-qty')) return; toggle(); });
@@ -999,7 +1034,7 @@ if(matchMedia('(hover:hover) and (pointer:fine)').matches && !matchMedia('(prefe
     let listT=0, sub=0;
     g('qbRows').innerHTML = sel.length ? sel.map(x=>{
       const list=x.p*x.q, net=list*(1-d/100); listT+=list; sub+=net;
-      return '<div class="qb-row'+(items.indexOf(x)===last?' new':'')+'"><span>'+x.n+(x.q>1?' × '+x.q:'')+'</span><span>'+(d?'<s>'+inr(list)+'</s>':inr(list))+'</span><b>'+inr(net)+'</b></div>';
+      return '<div class="qb-row'+(items.indexOf(x)===last?' new':'')+'"><span class="qb-it"><span class="qb-thumb sm">'+x.img+'</span><span>'+x.n+(x.q>1?' × '+x.q:'')+'</span></span><span>'+(d?'<s>'+inr(list)+'</s>':inr(list))+'</span><b>'+inr(net)+'</b></div>';
     }).join('') : '<div class="qb-empty">Tick a product on the left to add it.</div>';
     const gst=sub*0.18, tot=sub+gst;
     g('qbSub').textContent=inr(sub); g('qbGst').textContent=inr(gst);
