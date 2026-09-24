@@ -9,6 +9,23 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Meta Pixel Code (Kriya Website) -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2253510351856304');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt=""
+src="https://www.facebook.com/tr?id=2253510351856304&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <style>
@@ -1257,6 +1274,16 @@ document.querySelectorAll('.vs-row').forEach(r=>r.addEventListener('click',()=>{
   const chips=[...document.querySelectorAll('.chip')];
   const show=c=>{ chips.forEach(x=>x.classList.toggle('on',x===c)); info.innerHTML='<b>'+c.textContent+':</b> '+c.dataset.i; };
   chips.forEach(c=>{ c.addEventListener('click',()=>show(c)); c.addEventListener('mouseenter',()=>show(c)); });
+})();
+
+// ---------- Meta pixel events ----------
+(function(){
+  const track=(ev,params,custom)=>{ try{ if(window.fbq) custom?fbq('trackCustom',ev,params||{}):fbq('track',ev,params||{}); }catch(e){} };
+  // 1. leak check used: once, on the first slider move
+  let leakDone=false;
+  ['lA','lB','lC','lD'].forEach(id=>{ const el=document.getElementById(id); if(el) el.addEventListener('input',()=>{ if(!leakDone){ leakDone=true; track('LeakCheckUsed',{},true); } }); });
+  // 2. WhatsApp tapped: any wa.me link on the page, as the standard Contact event
+  document.addEventListener('click',e=>{ const a=e.target.closest('a[href*="wa.me"]'); if(a) track('Contact',{content_name:(a.textContent||'').trim().slice(0,60)}); });
 })();
 
 // ---------- scroll reveal ----------
