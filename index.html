@@ -299,6 +299,13 @@ header.scrolled{background:rgba(10,11,14,.92);backdrop-filter:blur(12px);padding
 .ai-input .wa{display:block;background:#D9FDD3;color:#111B21;border-radius:10px;padding:8px 12px;margin-bottom:7px;max-width:88%;font-size:14px}
 .ai-input .wa.mine{background:#fff;margin-left:auto}
 .ai-input .ctx{display:block;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--peach);margin-bottom:8px}
+.ai-own-tab{border-color:var(--red)!important;color:#fff!important}
+.ai-own-tab.on{background:var(--red)!important;color:#fff!important}
+.ai-type{width:100%;background:#1D2026;border:2px solid var(--red);border-radius:14px;padding:16px;font-family:var(--sans);font-size:15.5px;line-height:1.55;color:#fff;resize:vertical;margin-bottom:10px}
+.ai-type:focus{outline:none;box-shadow:0 0 0 4px rgba(224,48,74,.25)}
+.ai-note{font-size:12.5px;color:#8D909A;margin-bottom:12px}
+.ai-caret::after{content:'▍';color:var(--red);animation:dot 1s infinite}
+.ai-card.live{opacity:1;transform:none;animation:none;transition:all .3s}
 .ai-arrow{font-family:var(--display);font-size:40px;color:var(--red);align-self:center;text-align:center}
 .ai-cards{display:grid;gap:10px;min-height:150px}
 .ai-wait{color:#8D909A;font-size:15px;padding:18px;border:1.5px dashed #454954;border-radius:14px}
@@ -715,11 +722,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <button type="button" class="on" data-k="voice">🎙 Voice note</button>
         <button type="button" data-k="wa">💬 WhatsApp chat</button>
         <button type="button" data-k="rec">⌨️ Inside a record</button>
+        <button type="button" data-k="own" class="ai-own-tab">✍️ Try your own</button>
       </div>
       <div class="ai-grid">
         <div class="ai-in">
           <small id="aiInLab">You say</small>
           <div class="ai-input" id="aiInput"></div>
+          <textarea class="ai-type" id="aiType" rows="5" hidden placeholder="e.g. Spoke to Priya from Nair Interiors, designer, needs a quote for 12 chairs urgently, call her Thursday 98300 12345"></textarea>
+          <p class="ai-note" id="aiNote" hidden>A simplified live preview. The real agent uses AI, so it also handles Hinglish, spelling mistakes and messy notes.</p>
           <button type="button" class="btn btn-red" id="aiRun">▶ Run the AI agent</button>
         </div>
         <div class="ai-arrow" aria-hidden="true">→</div>
@@ -1054,21 +1064,55 @@ if(matchMedia('(hover:hover) and (pointer:fine)').matches && !matchMedia('(prefe
       in:'<span class="ctx">Mehta Traders · existing customer</span>"Spoke to him. Comparing us with two other vendors. Call back Monday with the revised rate."',
       out:[['n','Note, no duplicate','Added to Mehta Traders: comparing with two other vendors'],['t','Task','Call Mehta Traders Monday with the revised rate'],['s','Status','Quotation stage: negotiating']]}
   };
-  let cur='voice', timer=null;
+  const ta=document.getElementById('aiType'), note=document.getElementById('aiNote');
+  let cur='voice', timer=null, typer=null;
   function load(k){
-    cur=k; clearTimeout(timer);
+    cur=k; clearTimeout(timer); clearInterval(typer);
     document.querySelectorAll('.ai-tabs button').forEach(b=>b.classList.toggle('on',b.dataset.k===k));
+    const own=k==='own';
+    input.hidden=own; run.hidden=own; ta.hidden=!own; note.hidden=!own;
+    if(own){ lab.textContent='Type any note, the way you would say it'; parse(); ta.focus({preventScroll:true}); return; }
     lab.textContent=demos[k].lab; input.innerHTML=demos[k].in;
     out.innerHTML='<p class="ai-wait">Press run to see it work.</p>'; run.textContent='▶ Run the AI agent';
   }
+  const show=cards=>{ out.innerHTML=cards.map((c,i)=>'<div class="ai-card '+c[0]+'" style="animation-delay:'+(i*.25)+'s"><b>'+c[1]+'</b><span>'+c[2]+'</span></div>').join(''); };
+  // run: re-type the input live, think, then file the cards
   function go(){
-    clearTimeout(timer);
-    out.innerHTML='<div class="ai-think"><i></i><i></i><i></i></div>';
-    timer=setTimeout(()=>{
-      out.innerHTML=demos[cur].out.map((c,i)=>'<div class="ai-card '+c[0]+'" style="animation-delay:'+(i*.25)+'s"><b>'+c[1]+'</b><span>'+c[2]+'</span></div>').join('');
-      run.textContent='↻ Run again';
-    },900);
+    clearTimeout(timer); clearInterval(typer);
+    const html=demos[cur].in, tmp=document.createElement('div'); tmp.innerHTML=html;
+    const full=tmp.textContent; let n=0;
+    out.innerHTML='<p class="ai-wait">Listening…</p>';
+    input.classList.add('ai-caret'); input.textContent='';
+    typer=setInterval(()=>{
+      n+=2; input.textContent=full.slice(0,n);
+      if(n>=full.length){ clearInterval(typer); input.classList.remove('ai-caret'); input.innerHTML=html;
+        out.innerHTML='<div class="ai-think"><i></i><i></i><i></i></div>';
+        timer=setTimeout(()=>{ show(demos[cur].out); run.textContent='↻ Run again'; },800); }
+    },22);
   }
+  // simplified live parser for "Try your own"
+  const days=['today','tomorrow','monday','tuesday','wednesday','thursday','friday','saturday','sunday','next week'];
+  const jobs=['architect','interior designer','designer','contractor','builder','dealer','distributor','retailer','doctor','engineer','consultant','developer','manager','owner','trader'];
+  const cap=s=>s.replace(/\b\w/g,m=>m.toUpperCase());
+  function parse(){
+    const t=ta.value.trim(), lo=t.toLowerCase();
+    if(!t){ out.innerHTML='<p class="ai-wait">Start typing. Kriya files it as you go.</p>'; return; }
+    const cards=[];
+    const nm=t.match(/\b(?:[Mm]et|[Ss]poke to|[Cc]alled|[Mm]eeting with|[Vv]isited by|[Tt]alked to)\s+([A-Z][a-z]+(?:\s+(?!From\b)[A-Z][a-z]+)?(?:\s+ji)?)/) || t.match(/^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?(?:\s+ji)?)\b/);
+    const job=jobs.find(j=>lo.includes(j));
+    const ph=t.match(/(?:\+91[\s-]?)?[6-9]\d{4}[\s-]?\d{5}/);
+    const co=t.match(/from\s+([A-Z][\w&]*(?:\s+[A-Z][\w&]*){0,3})/);
+    if(nm||ph){ cards.push(['c','Contact captured',[nm&&nm[1],job&&cap(job),co&&co[1]!==(nm&&nm[1])?co[1]:null,ph&&ph[0]].filter(Boolean).join(' · ')]); }
+    const need=t.match(/(?:needs?|wants?|looking for|asked for|enquired about|requirement(?: for)?)\s+([^.,]+)/i);
+    if(need){ let s=need[1].trim().replace(/\s+(urgently|asap|by|on|call|follow).*$/i,'').replace(/^(a|an|the)\s+/i,''); cards.push(['n','Requirement',s.charAt(0).toUpperCase()+s.slice(1)]); }
+    const day=days.find(d=>lo.includes(d));
+    if(day) cards.push(['t','Task','Follow up '+(nm?'with '+nm[1]+', ':'')+cap(day)]);
+    const hot=/(urgent|asap|immediately|this week|today)/.test(lo), cold=/(just checking|maybe|later|next year|not sure)/.test(lo);
+    if(hot||cold) cards.push(['s','Lead temperature',hot?'🔥 Hot, marked urgent':'Cold, check back later']);
+    if(!cards.length) cards.push(['n','Note','Saved as a note: "'+t.slice(0,90)+(t.length>90?'…':'')+'"']);
+    out.innerHTML=cards.map(c=>'<div class="ai-card live '+c[0]+'"><b>'+c[1]+'</b><span>'+c[2]+'</span></div>').join('');
+  }
+  ta.addEventListener('input',parse);
   document.querySelectorAll('.ai-tabs button').forEach(b=>b.addEventListener('click',()=>load(b.dataset.k)));
   run.addEventListener('click',go);
   load('voice');
