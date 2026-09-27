@@ -53,6 +53,13 @@ section{padding:100px 0;position:relative}
 
 /* pages */
 .pg-dark{background:var(--black);color:var(--ltxt)}
+.scene{margin:30px 0 8px;border-radius:18px;overflow:hidden;position:relative;aspect-ratio:3/2;max-height:460px;box-shadow:0 26px 60px -34px rgba(10,11,14,.55);background:var(--char)}
+.scene img{display:block;width:100%;height:100%;object-fit:cover}
+.scene::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),inset 0 -60px 80px -40px rgba(10,11,14,.35);pointer-events:none}
+@media (min-width:861px){.scene{aspect-ratio:21/9}}
+.scene-ai img{object-position:50% 30%}
+.scene.scene-sq{aspect-ratio:1/1;max-height:none;max-width:440px}
+@media (max-width:860px){.scene.scene-sq{max-width:100%}}
 .lr-next{margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:16px 24px;flex-wrap:wrap;background:var(--char);color:var(--ltxt);border-radius:16px;padding:18px 22px}
 .lr-next p{font-size:16px;line-height:1.5;max-width:520px}
 .lr-next b{color:#fff}
@@ -624,6 +631,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <div class="kick rv">Your business, right now</div>
     <h2 class="dh rv">You already have a system.<br><em>It's just not software.</em></h2>
     <p class="lede rv">It lives across a WhatsApp inbox, a diary, three Excel files and one person's memory. It works, right up until the day it doesn't. Here is where it quietly leaks.</p>
+    <figure class="scene rv"><img src="media/scene-tuesday-quote.webp" alt="A phone showing a customer asking for a quote on Tuesday, marked Seen, next to a sticky note saying Reply" width="1200" height="800" loading="lazy" decoding="async"></figure>
     <div class="pain-list">
       <div class="pain-row rv"><div class="pain-num">01</div><div><h3>The enquiry you can't find</h3><p>Serious budget, good conversation, back in March. You remember the chat. You don't remember the number, and scrolling WhatsApp for a half‑remembered name is not a system.</p></div></div>
       <div class="pain-row rv"><div class="pain-num">02</div><div><h3>The follow‑up nobody made</h3><p>Nobody forgot on purpose. Nothing reminded anyone. The quotation went out, the customer went quiet, and the file closed itself without a decision ever being made.</p></div></div>
@@ -642,6 +650,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <div class="kick rv">The Enquiry Leak Check</div>
     <h2 class="dh rv">Do the maths once.<br><em>It's uncomfortable.</em></h2>
     <p class="lede rv">Drag the four sliders to match last month. Nobody else sees them, and nothing is sent anywhere.</p>
+    <figure class="scene rv"><img src="media/scene-money-floor.webp" alt="A cluttered desk with a phone, diary and sticky notes, and rupee notes slipping through a crack in the desk" width="1200" height="800" loading="lazy" decoding="async"></figure>
     <div class="leak-form rv" style="margin-top:34px">
       <div class="leak-q"><span class="leak-letter">A</span><span><b>How many enquiries came in last month?</b><span>WhatsApp, calls, walk‑ins, IndiaMART, referrals. All of them.</span></span><output class="leak-out" id="oA">40</output><input type="range" id="lA" min="5" max="500" step="5" value="40" aria-label="A: enquiries last month"></div>
       <div class="leak-q"><span class="leak-letter">B</span><span><b>How many of them never got a second follow‑up?</b><span>They asked, you replied once, and then nobody called again.</span></span><output class="leak-out" id="oB">10</output><input type="range" id="lB" min="0" max="40" step="1" value="10" aria-label="B: never followed up"></div>
@@ -772,6 +781,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <div class="kick rv">The AI agent</div>
     <h2 class="dh rv">Just say it.<br><em>It does the typing.</em></h2>
     <p class="lede rv">Speak a note, paste a WhatsApp chat, or type a line inside a customer's record. Kriya's AI agent works out what it is and files it: a contact, a note, a summary or a task. <b>Pick one and press run.</b></p>
+    <figure class="scene scene-ai rv"><img src="media/scene-ai-voice.webp" alt="A phone recording a voice note about an architect, turned into a contact, a note and a follow-up task" width="1200" height="800" loading="lazy" decoding="async"></figure>
     <div class="ai rv" id="ai-demo">
       <div class="ai-tabs" role="tablist">
         <button type="button" class="on" data-k="voice">🎙 Voice note</button>
@@ -806,6 +816,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <div class="kick rv">The document that does the selling</div>
     <h2 class="dh rv">Quotations that look<br>like you <em>mean business.</em></h2>
     <p class="lede rv">Don't take my word for it. Build one right here: tick products, set quantities and a discount, pick your brand colour. Nothing in it points back to Kriya.</p>
+    <figure class="scene rv"><img src="media/scene-late-quote.webp" alt="A desk at 11:40 PM with a laptop spreadsheet quotation, cold tea and handwritten figures" width="1200" height="800" loading="lazy" decoding="async"></figure>
 
     <div class="qb rv" id="qb">
       <div class="qb-panel">
@@ -967,6 +978,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <li>No sales team. You'll speak to me</li>
         <li>Rather chat now? <a class="txt-link" href="https://wa.me/919874700058?text=Hi%20Akshay%2C%20I%20saw%20Kriya.%20Quick%20question." target="_blank" rel="noopener">Message me on WhatsApp</a></li>
       </ul>
+      <figure class="scene scene-sq rv"><img src="media/scene-free-dashboard.webp" alt="A laptop showing a Kriya dashboard with a sticky note saying Free for you" width="900" height="900" loading="lazy" decoding="async"></figure>
     </div>
     <form class="ap-form rv" id="apForm" novalidate>
       <div class="ap-row">
