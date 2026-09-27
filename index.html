@@ -53,6 +53,40 @@ section{padding:100px 0;position:relative}
 
 /* pages */
 .pg-dark{background:var(--black);color:var(--ltxt)}
+.lr-next{margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:16px 24px;flex-wrap:wrap;background:var(--char);color:var(--ltxt);border-radius:16px;padding:18px 22px}
+.lr-next p{font-size:16px;line-height:1.5;max-width:520px}
+.lr-next b{color:#fff}
+/* free-dashboard form */
+#apply{padding:clamp(72px,10vw,120px) 0}
+.ap-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(28px,5vw,64px);align-items:start}
+.ap-points{list-style:none;margin-top:26px;display:grid;gap:12px}
+.ap-points li{position:relative;padding-left:26px;font-size:15.5px;line-height:1.5;color:var(--txt)}
+.ap-points li::before{content:'';position:absolute;left:0;top:8px;width:12px;height:3px;border-radius:2px;background:var(--red)}
+.ap-form{background:var(--card);border-radius:18px;padding:clamp(20px,3.4vw,34px);box-shadow:0 24px 60px -30px rgba(10,11,14,.35);display:grid;gap:16px}
+.ap-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ap-f{display:grid;gap:6px}
+.ap-f span,.ap-chips legend{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--char)}
+.ap-f input,.ap-f textarea{font:inherit;font-size:16px;color:var(--txt);background:var(--page2);border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;width:100%;transition:border-color .2s,background .2s}
+.ap-f input:focus,.ap-f textarea:focus{outline:none;border-color:var(--char);background:#fff}
+.ap-f input.bad{border-color:#BE1D36;background:#FDF1F3}
+.ap-f textarea{resize:vertical;min-height:84px}
+.ap-chips{border:0;display:flex;flex-wrap:wrap;gap:8px}
+.ap-chips legend{margin-bottom:8px}
+.ap-chips button{font:inherit;font-size:14px;font-weight:600;padding:9px 14px;border-radius:99px;border:1.5px solid var(--line);background:var(--page2);color:var(--txt);cursor:pointer;transition:transform .2s var(--ease),background .2s,border-color .2s,color .2s}
+.ap-chips button:hover{border-color:var(--char)}
+.ap-chips button.on{background:var(--char);border-color:var(--char);color:#fff;transform:scale(1.03)}
+.ap-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.ap-leak{background:var(--mint);border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.5;color:var(--txt)}
+.ap-leak b{color:#0F5132}
+.ap-submit{width:100%;margin-top:4px}
+.ap-submit[disabled]{opacity:.6;cursor:wait}
+.ap-msg{font-size:15px;line-height:1.5;min-height:1em}
+.ap-msg.err{color:#BE1D36;font-weight:600}
+.ap-done{text-align:center;padding:24px 8px;display:grid;gap:14px;justify-items:center}
+.ap-done h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(30px,4vw,42px);line-height:1}
+.ap-done p{color:var(--grey);max-width:420px;line-height:1.6}
+@media (max-width:860px){.ap-grid{grid-template-columns:1fr}}
+@media (max-width:520px){.ap-row{grid-template-columns:1fr}}
 .pg-light{background:var(--page);color:var(--txt)}
 .pg-light2{background:var(--page2);color:var(--txt)}
 
@@ -619,12 +653,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <div class="lr-box lr-dark rv"><small>Lost every year</small><div class="lr-formula">C<i>×</i>D<i>×</i>12</div><p>Orders you could have won last month, times your average order, times twelve months. Money you had already earned the right to, and let walk out of the door.</p></div>
       <div class="lr-box lr-peach rv rv2" aria-live="polite"><small>Your number</small><div class="lr-amount" id="lYear">₹6,00,000 <span>a year</span></div><p id="lWhy">40 enquiries (A). 10 never followed up (B). 2 of those could have closed (C). ₹25,000 average order (D). So 2 × ₹25,000 × 12.</p></div>
     </div>
+    <div class="lr-next rv">
+      <p><b>Want me to show you where it's leaking?</b> A free 15‑minute call. No pitch, no obligation.</p>
+      <a class="btn btn-red btn-wrap" href="https://wa.me/919874700058?text=Hi%20Akshay%2C%20I%20just%20tried%20the%20leak%20check%20on%20your%20site.%20Can%20we%20do%20the%2015-minute%20call%3F" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3z"/></svg> Book the 15‑minute call</a>
+    </div>
     <p class="leak-bold rv">You don't need Kriya to win more deals. You need it to stop losing the ones you had already earned.</p>
     <p class="leak-sub rv">The number above is an estimate. The real one depends on where your enquiries actually slip.</p>
     <div class="proof rv"><div class="proof-n">13,900</div><p><b>A real example.</b> One business I looked at had about 13,900 enquiries in its records. <b>Fewer than 2%</b> had ever had a second follow‑up. Nobody was lazy. Nothing reminded anyone.</p></div>
     <div class="red-box rv">
       <div><h3>Want to see it fixed?</h3><p>I'll set up a free working dashboard with your own leads, so you can see every enquiry and follow‑up in one place before you decide anything.</p></div>
-      <a class="btn btn-white btn-wrap" href="https://wa.me/919874700058?text=Hi%20Akshay%2C%20I%20checked%20my%20enquiry%20leak%20on%20your%20site.%20I%27d%20like%20to%20talk%20about%20a%20free%20dashboard." target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3z"/></svg> Get your free dashboard</a>
+      <a class="btn btn-white btn-wrap" href="https://wa.me/919874700058?text=Hi%20Akshay%2C%20I%20saw%20Kriya.%20Quick%20question." target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3z"/></svg> Get your free dashboard</a>
     </div>
   </div>
 </section>
@@ -643,7 +681,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
     <div class="want-sum" aria-live="polite">
       <p id="wantText">Pick as many as you like.</p>
-      <a class="btn btn-red btn-wrap" id="wantBtn" href="https://wa.me/919874700058?text=Hi%20Akshay%2C%20I%20checked%20my%20enquiry%20leak%20on%20your%20site.%20I%27d%20like%20to%20talk%20about%20a%20free%20dashboard." target="_blank" rel="noopener" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3z"/></svg> Show me this in a free dashboard</a>
+      <a class="btn btn-red btn-wrap" id="wantBtn" href="https://wa.me/919874700058?text=Hi%20Akshay%2C%20I%20saw%20Kriya.%20Quick%20question." target="_blank" rel="noopener" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3z"/></svg> Show me this in a free dashboard</a>
     </div>
     <div class="vs rv" id="vs">
       <div class="vs-h l">How it works today</div><div class="vs-h r">How it works on Kriya</div>
@@ -917,6 +955,50 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </div>
 </section>
 
+<!-- 10b. FREE DASHBOARD FORM -->
+<section id="apply" class="pg-light" hidden>
+  <div class="wrap ap-grid">
+    <div class="ap-intro">
+      <div class="kick rv">Prefer a form?</div>
+      <h2 class="dh rv">Ask for your<br><em>free dashboard.</em></h2>
+      <p class="lede rv">Tell me a little about your business. I'll call you within one working day, and if it's a fit, I'll build a working dashboard with your own enquiries. Free.</p>
+      <ul class="ap-points rv">
+        <li>Your leak‑check numbers are sent along, so we don't start from zero</li>
+        <li>No sales team. You'll speak to me</li>
+        <li>Rather chat now? <a class="txt-link" href="https://wa.me/919874700058?text=Hi%20Akshay%2C%20I%20saw%20Kriya.%20Quick%20question." target="_blank" rel="noopener">Message me on WhatsApp</a></li>
+      </ul>
+    </div>
+    <form class="ap-form rv" id="apForm" novalidate>
+      <div class="ap-row">
+        <label class="ap-f"><span>Your name *</span><input name="name" autocomplete="name" required maxlength="80" placeholder="e.g. Rahul Jain"></label>
+        <label class="ap-f"><span>Mobile (WhatsApp) *</span><input name="phone" type="tel" inputmode="numeric" autocomplete="tel" required maxlength="14" placeholder="10‑digit number"></label>
+      </div>
+      <div class="ap-row">
+        <label class="ap-f"><span>Business name</span><input name="business" autocomplete="organization" maxlength="120" placeholder="e.g. Jain Interiors"></label>
+        <label class="ap-f"><span>City</span><input name="city" autocomplete="address-level2" maxlength="60" placeholder="e.g. Kolkata"></label>
+      </div>
+      <label class="ap-f"><span>Email</span><input name="email" type="email" autocomplete="email" maxlength="120" placeholder="optional"></label>
+
+      <fieldset class="ap-chips" data-name="industry"><legend>Your industry</legend>
+        <button type="button">Interiors</button><button type="button">Furniture</button><button type="button">Modular kitchens</button><button type="button">Lighting</button><button type="button">Home automation / AV</button><button type="button">Solar</button><button type="button">Architecture</button><button type="button">Construction</button><button type="button">Other</button>
+      </fieldset>
+      <fieldset class="ap-chips" data-name="team"><legend>Team size</legend>
+        <button type="button">Just me</button><button type="button">2 to 5</button><button type="button">6 to 20</button><button type="button">20+</button>
+      </fieldset>
+      <fieldset class="ap-chips" data-name="problem"><legend>What hurts most?</legend>
+        <button type="button">Missed follow‑ups</button><button type="button">Quotations take too long</button><button type="button">Can't see what my team is doing</button><button type="button">Enquiries scattered everywhere</button>
+      </fieldset>
+
+      <label class="ap-f"><span>Anything else I should know?</span><textarea name="message" rows="3" maxlength="1000" placeholder="How enquiries come in today, what you've tried…"></textarea></label>
+      <label class="ap-hp" aria-hidden="true">Leave this empty<input name="company_site" tabindex="-1" autocomplete="off"></label>
+
+      <div class="ap-leak" id="apLeak" hidden></div>
+      <button class="btn btn-red ap-submit" type="submit">Get my free dashboard</button>
+      <p class="ap-msg" id="apMsg" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
 <!-- 11. NEXT STEP (catalogue page 9) -->
 <section id="final-cta" class="pg-dark">
   <div class="wrap">
@@ -927,21 +1009,21 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <div class="cs cs2 rv rv2"><small>Step two</small><h3>Fifteen minutes with me</h3><p>How your enquiries come in, and where they slip. Free.</p></div>
       <div class="cs cs3 rv rv3"><small>Step three</small><h3>See your version</h3><p>If it's a fit, a free working dashboard shaped around your business.</p></div>
     </div>
-    <div class="send rv"><small>What to send</small><div class="bubble">Hi Akshay, I checked my enquiry leak on your site. I'd like to talk about a free dashboard.</div></div>
+    <div class="send rv"><small>What to send</small><div class="bubble">Hi Akshay, I saw Kriya. Quick question.</div></div>
     <div class="contact rv">
       <div>
         <div class="name">Akshay Mittal</div>
         <p><b>Kriya Systems</b>, Kolkata<br>WhatsApp <b>98747 00058</b><br>info@kriyasystems.in · kriyasystems.in</p>
         <span class="demo">Or <a href="https://crm.kriyasystems.in/" target="_blank" rel="noopener">try the live demo</a> first, no signup needed.</span>
       </div>
-      <a class="btn btn-red btn-wrap" href="https://wa.me/919874700058?text=Hi%20Akshay%2C%20I%20checked%20my%20enquiry%20leak%20on%20your%20site.%20I%27d%20like%20to%20talk%20about%20a%20free%20dashboard." target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3z"/></svg> Message me on WhatsApp</a>
+      <a class="btn btn-red btn-wrap" href="https://wa.me/919874700058?text=Hi%20Akshay%2C%20I%20saw%20Kriya.%20Quick%20question." target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3z"/></svg> Message me on WhatsApp</a>
     </div>
   </div>
 </section>
 
 <footer><div class="wrap"><span>© 2026 Kriya Systems, Kolkata</span><span>Prices confirmed after a conversation, excluding GST</span></div></footer>
 
-<a class="btn btn-red sticky-cta" id="stickyCta" href="https://wa.me/919874700058?text=Hi%20Akshay%2C%20I%20checked%20my%20enquiry%20leak%20on%20your%20site.%20I%27d%20like%20to%20talk%20about%20a%20free%20dashboard." target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3z"/></svg> Get your free dashboard</a>
+<a class="btn btn-red sticky-cta" id="stickyCta" href="https://wa.me/919874700058?text=Hi%20Akshay%2C%20I%20saw%20Kriya.%20Quick%20question." target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3z"/></svg> Get your free dashboard</a>
 
 <script>
 // ---------- scroll story (chaos -> order) ----------
@@ -1284,6 +1366,61 @@ document.querySelectorAll('.vs-row').forEach(r=>r.addEventListener('click',()=>{
   ['lA','lB','lC','lD'].forEach(id=>{ const el=document.getElementById(id); if(el) el.addEventListener('input',()=>{ if(!leakDone){ leakDone=true; track('LeakCheckUsed',{},true); } }); });
   // 2. WhatsApp tapped: any wa.me link on the page, as the standard Contact event
   document.addEventListener('click',e=>{ const a=e.target.closest('a[href*="wa.me"]'); if(a) track('Contact',{content_name:(a.textContent||'').trim().slice(0,60)}); });
+})();
+
+// ---------- free-dashboard form -> CRM ----------
+(function(){
+  const form=document.getElementById('apForm'); if(!form) return;
+  const ENDPOINT='https://auditrocrm.netlify.app/.netlify/functions/kriya-lead';
+  const g=id=>document.getElementById(id), msg=g('apMsg'), leakBox=g('apLeak');
+  const picks={};
+  form.querySelectorAll('.ap-chips').forEach(fs=>{
+    fs.addEventListener('click',e=>{
+      const b=e.target.closest('button'); if(!b) return;
+      const was=b.classList.contains('on');
+      fs.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
+      if(!was) b.classList.add('on');
+      picks[fs.dataset.name]=was?'':b.textContent.trim();
+    });
+  });
+  let leakUsed=false;
+  ['lA','lB','lC','lD'].forEach(id=>{ const el=g(id); if(el) el.addEventListener('input',()=>{ leakUsed=true; showLeak(); }); });
+  const inr=v=>'₹'+Math.round(v).toLocaleString('en-IN');
+  function leakText(){
+    if(!leakUsed||!g('lA')) return '';
+    const a=+g('lA').value,b=+g('lB').value,c=+g('lC').value,d=+g('lD').value;
+    return `${a} enquiries/month, ${b} not followed up, ${c} would have bought, avg deal ${inr(d)}, about ${inr(c*d*12)} a year`;
+  }
+  function showLeak(){
+    const t=leakText(); if(!t){ leakBox.hidden=true; return; }
+    leakBox.hidden=false; leakBox.innerHTML='<b>Your leak check will be sent too:</b> '+t;
+  }
+  const utm=(()=>{ const p=new URLSearchParams(location.search); return ['utm_source','utm_medium','utm_campaign','fbclid'].filter(k=>p.get(k)).map(k=>k==='fbclid'?'Facebook/Instagram ad':k.replace('utm_','')+'='+p.get(k)).join(', '); })();
+
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    msg.className='ap-msg'; msg.textContent='';
+    const f=form.elements, phone=f.phone.value.replace(/\D/g,'').replace(/^91(?=\d{10}$)/,'').replace(/^0/,'');
+    let bad=false;
+    [f.name,f.phone].forEach(x=>x.classList.remove('bad'));
+    if(!f.name.value.trim()){ f.name.classList.add('bad'); bad=true; }
+    if(!/^\d{10}$/.test(phone)){ f.phone.classList.add('bad'); bad=true; }
+    if(bad){ msg.className='ap-msg err'; msg.textContent='Please add your name and a 10‑digit mobile number.'; return; }
+    const btn=form.querySelector('.ap-submit'); btn.disabled=true; btn.textContent='Sending…';
+    const body={ name:f.name.value, phone, email:f.email.value, business:f.business.value, city:f.city.value,
+      industry:picks.industry||'', team:picks.team||'', problem:picks.problem||'', message:f.message.value,
+      leak:leakText(), utm, company_site:f.company_site.value };
+    try{
+      const r=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+      if(!r.ok) throw new Error(r.status);
+      try{ if(window.fbq) fbq('track','Lead',{content_name:'Free dashboard form'}); }catch(_){}
+      const first=(f.name.value.trim().split(/\s+/)[0]||'').replace(/[<>&"]/g,'');
+      form.innerHTML=`<div class="ap-done"><h3>Thank you${first?', '+first:''}.</h3><p>I've got your details. I'll call you on <b>${phone.replace(/(\d{5})(\d{5})/,'$1 $2')}</b> within one working day.</p><a class="btn btn-red btn-wrap" href="https://wa.me/919874700058?text=Hi%20Akshay%2C%20I%20saw%20Kriya.%20Quick%20question." target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3z"/></svg> Or message me now</a></div>`;
+    }catch(err){
+      btn.disabled=false; btn.textContent='Get my free dashboard';
+      msg.className='ap-msg err'; msg.innerHTML='Something went wrong sending that. Please <a class="txt-link" href="https://wa.me/919874700058?text=Hi%20Akshay%2C%20I%20saw%20Kriya.%20Quick%20question." target="_blank" rel="noopener">message me on WhatsApp</a> instead.';
+    }
+  });
 })();
 
 // ---------- scroll reveal ----------
