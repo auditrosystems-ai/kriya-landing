@@ -956,7 +956,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </section>
 
 <!-- 10b. FREE DASHBOARD FORM -->
-<section id="apply" class="pg-light" hidden>
+<section id="apply" class="pg-light">
   <div class="wrap ap-grid">
     <div class="ap-intro">
       <div class="kick rv">Prefer a form?</div>
@@ -1003,7 +1003,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <section id="final-cta" class="pg-dark">
   <div class="wrap">
     <h2 class="dh rv">The next step is<br>a conversation,<br><em>not a contract.</em></h2>
-    <p class="lede rv">No forms, no sales team, no obligation. Just a chat with the person who built it.</p>
+    <p class="lede rv">No sales team, no obligation. Just a chat with the person who built it.</p>
     <div class="close-steps">
       <div class="cs cs1 rv"><small>Step one</small><h3>Check your leak</h3><p>Four numbers, <a href="#leak">right here on this page</a>. Nobody sees them but you.</p></div>
       <div class="cs cs2 rv rv2"><small>Step two</small><h3>Fifteen minutes with me</h3><p>How your enquiries come in, and where they slip. Free.</p></div>
@@ -1395,7 +1395,16 @@ document.querySelectorAll('.vs-row').forEach(r=>r.addEventListener('click',()=>{
     const t=leakText(); if(!t){ leakBox.hidden=true; return; }
     leakBox.hidden=false; leakBox.innerHTML='<b>Your leak check will be sent too:</b> '+t;
   }
-  const utm=(()=>{ const p=new URLSearchParams(location.search); return ['utm_source','utm_medium','utm_campaign','fbclid'].filter(k=>p.get(k)).map(k=>k==='fbclid'?'Facebook/Instagram ad':k.replace('utm_','')+'='+p.get(k)).join(', '); })();
+  const utm=(()=>{
+    let v=''; try{ v=sessionStorage.getItem('kriyaUtm')||''; }catch(_){}
+    if(!v){
+      const p=new URLSearchParams(location.search);
+      v=['utm_source','utm_medium','utm_campaign','utm_content','fbclid'].filter(k=>p.get(k)).map(k=>k==='fbclid'?'fbclid (Meta ad)':k+'='+p.get(k)).join('&');
+      if(!v && document.referrer && !document.referrer.includes(location.hostname)) v='referrer='+document.referrer;
+      try{ if(v) sessionStorage.setItem('kriyaUtm',v); }catch(_){}
+    }
+    return v.slice(0,300);
+  })();
 
   form.addEventListener('submit',async e=>{
     e.preventDefault();
@@ -1412,13 +1421,15 @@ document.querySelectorAll('.vs-row').forEach(r=>r.addEventListener('click',()=>{
       leak:leakText(), utm, company_site:f.company_site.value };
     try{
       const r=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-      if(!r.ok) throw new Error(r.status);
+      const res=await r.json().catch(()=>({}));
+      if(r.status===400&&res.error&&res.error.includes('10-digit')){ btn.disabled=false; btn.textContent='Get my free dashboard'; f.phone.classList.add('bad'); msg.className='ap-msg err'; msg.textContent='Please enter your name and a valid 10‑digit mobile number.'; return; }
+      if(!r.ok||!res.ok) throw new Error(r.status);
       try{ if(window.fbq) fbq('track','Lead',{content_name:'Free dashboard form'}); }catch(_){}
       const first=(f.name.value.trim().split(/\s+/)[0]||'').replace(/[<>&"]/g,'');
-      form.innerHTML=`<div class="ap-done"><h3>Thank you${first?', '+first:''}.</h3><p>I've got your details. I'll call you on <b>${phone.replace(/(\d{5})(\d{5})/,'$1 $2')}</b> within one working day.</p><a class="btn btn-red btn-wrap" href="https://wa.me/919874700058?text=Hi%20Akshay%2C%20I%20saw%20Kriya.%20Quick%20question." target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3z"/></svg> Or message me now</a></div>`;
+      form.innerHTML=`<div class="ap-done"><h3>Thank you${first?', '+first:''}.</h3><p>I'll reach out on WhatsApp at <b>${phone.replace(/(\d{5})(\d{5})/,'$1 $2')}</b> shortly to set up your free dashboard.</p><a class="btn btn-red btn-wrap" href="https://wa.me/919874700058?text=Hi%20Akshay%2C%20I%20saw%20Kriya.%20Quick%20question." target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3z"/></svg> Or message me now</a></div>`;
     }catch(err){
       btn.disabled=false; btn.textContent='Get my free dashboard';
-      msg.className='ap-msg err'; msg.innerHTML='Something went wrong sending that. Please <a class="txt-link" href="https://wa.me/919874700058?text=Hi%20Akshay%2C%20I%20saw%20Kriya.%20Quick%20question." target="_blank" rel="noopener">message me on WhatsApp</a> instead.';
+      msg.className='ap-msg err'; msg.innerHTML='Something went wrong. Please try again, or <a class="txt-link" href="https://wa.me/919874700058?text=Hi%20Akshay%2C%20I%20saw%20Kriya.%20Quick%20question." target="_blank" rel="noopener">WhatsApp me at 98747 00058</a>.';
     }
   });
 })();
