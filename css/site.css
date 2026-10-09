@@ -284,3 +284,9 @@ h1 em,h2 em{font-style:normal;color:var(--red)}
 .pay-sum .tot{border-top:1px solid var(--line2);padding-top:8px;margin-top:2px;font-size:17px}
 .pay-sum .tot span{color:var(--txt);font-weight:700}
 .pay-sum .tot b{font-family:var(--num);font-weight:400;font-size:24px;line-height:1}
+.plan-trial{display:block;text-align:center;margin-top:10px;font-size:14px;font-weight:600;color:var(--grey);text-decoration:underline;text-underline-offset:3px}
+.plan-trial:hover{color:var(--red-dk)}
+.trial-strip{max-width:880px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--mint);color:#13241B;border-radius:16px;padding:16px 20px}
+.trial-strip b{display:block;font-size:16px}
+.trial-strip span{font-size:14.5px}
+.pay-trial{margin-top:14px;background:var(--mint);color:#13241B;border-radius:12px;padding:12px 14px;font-size:15px}
