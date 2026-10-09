@@ -1,0 +1,163 @@
+/* Interactive pieces carried over from the original site, restyled for the new design
+   (pain "That's me", what-you-want picker, today vs Kriya, capture demo, also-included chips,
+   is-this-for-you check, team-size slider, honest lists, close steps, scenes, progress bar, tilt). */
+
+/* reading progress (every page) */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--red);z-index:120;pointer-events:none}
+
+/* tilt toward the pointer */
+.tilt{transition:transform .35s var(--ease),box-shadow .3s}
+.tilt.rv{transition:opacity .7s var(--ease),transform .4s var(--ease),box-shadow .3s}
+
+/* photo scenes */
+.scene{margin:26px auto 6px;border-radius:18px;overflow:hidden;aspect-ratio:3/2;max-height:440px;box-shadow:0 26px 60px -34px rgba(10,11,14,.55);background:var(--char)}
+.scene img{width:100%;height:100%;object-fit:cover}
+.scene-sq{aspect-ratio:1/1;max-height:none;max-width:440px}
+
+/* ---------- pain list: "That's me" ---------- */
+.pain-list{border-top:2px solid var(--txt);margin-top:28px}
+.pain-row{display:grid;grid-template-columns:64px 1fr auto;gap:10px 16px;align-items:start;padding:20px 12px;border-bottom:1px solid var(--line);cursor:pointer;border-radius:10px;transition:background .25s}
+.pain-row:hover{background:rgba(15,122,90,.04)}
+.pain-num{font-family:var(--num);font-size:36px;line-height:.95;color:var(--red)}
+.pain-row h3{margin-bottom:4px}
+.pain-row p{color:var(--grey);font-size:15.5px;max-width:700px}
+.me{font-size:13px;font-weight:700;padding:8px 14px;border-radius:99px;border:1.5px solid var(--line2);background:var(--card);color:var(--txt);cursor:pointer;white-space:nowrap;transition:all .2s var(--ease)}
+.pain-row:hover .me{border-color:var(--txt)}
+.pain-row.on{background:#EEF6F2}
+.pain-row.on .me{background:var(--red);border-color:var(--red);color:#fff}
+.pain-row.on h3{color:var(--red-dk)}
+.pain-count{margin-top:18px;font-size:16px;color:var(--grey);min-height:26px}
+.pain-count b{color:var(--txt)}
+.pain-count a{color:var(--red-dk);font-weight:700;border-bottom:1.5px solid currentColor}
+@media(max-width:620px){.pain-row{grid-template-columns:44px 1fr;padding:18px 6px}.pain-num{font-size:28px}.me{grid-column:2;justify-self:start}}
+
+/* ---------- what you want: tap to pick ---------- */
+.want-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:720px){.want-grid{grid-template-columns:1fr}}
+.want-card{position:relative;text-align:left;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--red);border-radius:var(--r);padding:22px 64px 22px 24px;cursor:pointer;color:var(--txt);transition:transform .25s var(--ease),box-shadow .25s,background .25s,border-color .25s}
+.want-card:hover{box-shadow:var(--shadow)}
+.want-card:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.want-card h3{margin-bottom:6px}
+.want-card p{color:var(--grey);font-size:15px}
+.want-tick{position:absolute;top:20px;right:20px;width:28px;height:28px;border-radius:99px;border:2px solid var(--line2);display:flex;align-items:center;justify-content:center;color:transparent;transition:all .25s var(--ease)}
+.want-card.on{background:#EEF6F2;border-left-width:10px}
+.want-card.on .want-tick{background:var(--red);border-color:var(--red);color:#fff;transform:scale(1.12)}
+.want-sum{margin-top:18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.want-sum p{flex:1;min-width:240px;color:var(--grey)}
+.want-sum p b{color:var(--red-dk)}
+
+/* ---------- today vs Kriya ---------- */
+.vs{display:grid;grid-template-columns:1fr 1fr;border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.vs-h{padding:18px 22px 10px;font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.vs-h.l{background:var(--sand);color:var(--grey)}
+.vs-h.r{background:var(--char);color:#C9CBD1}
+.vs-row{display:contents;cursor:pointer}
+.vs-row span{padding:12px 22px;font-size:15.5px;border-top:1px solid;transition:background .25s,color .25s}
+.vs-row span:first-child{background:var(--sand);color:var(--txt);border-color:#D6D0C4}
+.vs-row span:last-child{background:var(--char);color:#fff;border-color:#3A3E47}
+.vs-row:hover span:first-child,.vs-row.hl span:first-child{text-decoration:line-through;color:#8C8A84}
+.vs-row:hover span:last-child,.vs-row.hl span:last-child{background:var(--red)}
+.vs-row:last-child span{padding-bottom:18px}
+@media(max-width:560px){.vs-row span,.vs-h{padding-left:14px;padding-right:14px;font-size:14.5px}}
+
+/* ---------- the four fixes + capture demo ---------- */
+.fix-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:760px){.fix-grid{grid-template-columns:1fr}}
+.fix{border-radius:18px;padding:26px}
+.fix small{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.7;margin-bottom:10px}
+.fix h3{font-size:21px;margin-bottom:10px}
+.fix p{font-size:15.5px;line-height:1.65}
+.fix q{display:block;margin-top:16px;padding:12px 14px;border-radius:10px;font-style:italic;font-size:14.5px;quotes:none}
+.fx1{background:var(--black);color:#fff}.fx1 p{color:#D5D6DA}.fx1 q{background:#1D2026;color:#E6E7EA}
+.fx2{background:var(--mint);color:#13241B}.fx2 q{background:rgba(255,255,255,.55)}
+.fx3{background:var(--peach);color:#2A1606}
+.fx4{background:var(--card);border:1px solid var(--line)}.fx4 p{color:var(--grey)}
+.demo-btn{margin-top:14px;font-size:14px;font-weight:700;background:var(--red);color:#fff;border:none;border-radius:99px;padding:9px 16px;cursor:pointer;transition:transform .2s var(--ease)}
+.demo-btn:hover{transform:translateY(-1px)}
+.cap-out{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.cap-out span{font-size:13px;font-weight:700;padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);opacity:0;transform:translateY(8px) scale(.9);transition:opacity .35s var(--ease),transform .35s var(--ease)}
+.cap-out span.hot{background:rgba(239,217,143,.22);border-color:rgba(239,217,143,.55)}
+.cap-out span.task{background:var(--mint);color:#13241B;border-color:var(--mint)}
+.cap-out.go span{opacity:1;transform:none}
+.cap-out.go span:nth-child(2){transition-delay:.25s}.cap-out.go span:nth-child(3){transition-delay:.5s}.cap-out.go span:nth-child(4){transition-delay:.75s}.cap-out.go span:nth-child(5){transition-delay:1s}
+
+/* ---------- also included: tap a chip ---------- */
+.inc{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.inc-lead{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-right:6px}
+.inc button{font-size:14px;font-weight:600;padding:8px 14px;border-radius:99px;background:var(--card);border:1px solid var(--line2);color:var(--txt);cursor:pointer;transition:all .2s}
+.inc button:hover,.inc button.on{background:var(--black);color:#fff;border-color:var(--black)}
+.inc-info{margin-top:12px;min-height:26px;color:var(--grey)}
+.inc-info b{color:var(--txt)}
+
+/* ---------- shaped around you ---------- */
+.shape{border-top:2px solid var(--txt)}
+.shape-r{display:grid;grid-template-columns:190px 1fr;gap:12px;padding:14px 10px;border-bottom:1px solid var(--line);font-size:15.5px;border-radius:8px;transition:background .2s}
+.shape-r:hover{background:rgba(15,122,90,.05)}
+.shape-r span{color:var(--grey)}
+@media(max-width:560px){.shape-r{grid-template-columns:1fr;gap:2px}}
+
+/* ---------- is this for you / honest lists ---------- */
+.fit-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+@media(max-width:760px){.fit-grid{grid-template-columns:1fr}}
+.fit-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 26px}
+.fit-card small{display:block;font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.fit-card.yes small{color:var(--red-dk)}
+.fit-card.no small{color:var(--grey)}
+.fit-card ul{list-style:none}
+.fit-card li{padding:11px 0;border-bottom:1px solid var(--line);font-size:15.5px;line-height:1.5;display:flex;gap:10px}
+.fit-card li:last-child{border-bottom:none}
+.fit-card li::before{font-weight:900;flex-shrink:0}
+.fit-card.yes li::before{content:'✓';color:var(--red)}
+.fit-card.no li::before{content:'✕';color:#A9A69F}
+.fit-tap li{cursor:pointer;border-radius:8px;padding-left:8px;padding-right:8px;transition:background .2s}
+.fit-tap li:hover{background:var(--page2)}
+.fit-tap li::before{content:''!important;width:20px;height:20px;border-radius:6px;border:2px solid var(--line2);margin-top:1px;transition:all .2s}
+.fit-tap li.on{background:#EEF6F2}
+.fit-tap li.on::before{content:'✓'!important;background:var(--red);border-color:var(--red);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+.fit-verdict{margin-top:10px;font-weight:700;color:var(--red-dk);min-height:24px}
+.fit-card .note{margin-top:10px;font-size:14px;color:var(--grey);font-style:italic}
+.honest .fit-card li::before{content:'•';color:var(--grey)}
+
+/* ---------- team size: per-person vs flat ---------- */
+.team{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 26px}
+.team-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px}
+.team-top b{font-size:16px}
+.team-top output{font-family:var(--num);font-size:30px;color:var(--red)}
+.team input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:10px;border-radius:99px;background:linear-gradient(to right,var(--red) var(--p,8%),#E4E1DA var(--p,8%));cursor:pointer}
+.team input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:99px;background:#fff;border:3px solid var(--black);box-shadow:0 4px 10px rgba(0,0,0,.25)}
+.team input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:99px;background:#fff;border:3px solid var(--black)}
+.team-bars{margin-top:20px;display:grid;gap:10px}
+.tb{display:grid;grid-template-columns:140px 1fr 56px;align-items:center;gap:12px;font-size:14.5px;font-weight:700}
+.tb-track{height:26px;border-radius:8px;background:#F0EEE9;overflow:hidden}
+.tb-track i{display:block;height:100%;width:10%;background:var(--char);border-radius:8px;transition:width .45s var(--ease)}
+.flat-track{background:var(--mint);color:#13241B;font-size:12.5px;font-weight:700;display:flex;align-items:center;padding:0 12px}
+.tb em{font-style:normal;font-family:var(--num);font-size:20px;text-align:right}
+.team-note{margin-top:12px;color:var(--grey);font-size:15px}
+@media(max-width:520px){.tb{grid-template-columns:96px 1fr 44px;font-size:13px}}
+
+/* ---------- three close steps + message bubble ---------- */
+.close-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:760px){.close-steps{grid-template-columns:1fr}}
+.cs{border-radius:18px;padding:24px}
+.cs small{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.75;margin-bottom:8px}
+.cs h3{margin-bottom:8px}
+.cs p{font-size:15px}
+.cs a{font-weight:700;border-bottom:1.5px solid currentColor}
+.cs1{background:var(--red);color:#fff}.cs2{background:var(--mint);color:#13241B}.cs3{background:var(--peach);color:#2A1606}
+.send{margin-top:22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.send small{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--grey)}
+.bubble{background:#D9FDD3;color:#111B21;border-radius:14px 14px 14px 4px;padding:10px 14px;font-size:15px;box-shadow:0 6px 16px -10px rgba(0,0,0,.3)}
+
+/* ---------- proof + quotation list ---------- */
+.proof{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;background:var(--black);color:#fff;border-radius:18px;padding:24px 28px}
+.proof-n{font-family:var(--num);font-size:clamp(44px,6vw,64px);line-height:1;color:var(--peach)}
+.proof p{color:#D5D6DA}
+.proof b{color:#fff}
+@media(max-width:560px){.proof{grid-template-columns:1fr}}
+.q-list{display:grid;grid-template-columns:1fr 1fr;column-gap:36px}
+@media(max-width:720px){.q-list{grid-template-columns:1fr}}
+.q-list div{display:grid;grid-template-columns:36px 1fr;padding:14px 0;border-bottom:1px solid var(--lline);color:#D8D9DD}
+.q-list div b{color:#fff}
+.q-list div span:first-child{font-family:var(--num);font-size:22px;color:var(--peach);line-height:1.1}
+.q-why{margin-top:28px;border:1px solid #33363E;border-radius:16px;padding:20px 24px;color:#D8D9DD;line-height:1.65}
+.q-why b{color:var(--peach)}
