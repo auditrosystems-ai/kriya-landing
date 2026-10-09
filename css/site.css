@@ -276,3 +276,11 @@ h1 em,h2 em{font-style:normal;color:var(--red)}
 .rv.in{opacity:1;transform:none}
 .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}*{animation:none!important;transition:none!important}}
+
+/* ---------- pay page summary ---------- */
+.pay-sum{background:var(--page);border-radius:12px;padding:14px 16px;display:grid;gap:6px;font-size:15px}
+.pay-sum div{display:flex;justify-content:space-between;gap:12px}
+.pay-sum span{color:var(--grey)}
+.pay-sum .tot{border-top:1px solid var(--line2);padding-top:8px;margin-top:2px;font-size:17px}
+.pay-sum .tot span{color:var(--txt);font-weight:700}
+.pay-sum .tot b{font-family:var(--num);font-weight:400;font-size:24px;line-height:1}
