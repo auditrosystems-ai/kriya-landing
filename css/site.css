@@ -241,7 +241,7 @@ h1 em,h2 em{font-style:normal;color:var(--red)}
 .f>span,.f-chips legend{font-size:13.5px;font-weight:700;color:var(--txt)}
 .f input,.f textarea,.f select{font:inherit;font-size:16px;color:var(--txt);background:var(--page2);border:1.5px solid var(--line2);border-radius:10px;padding:12px 14px;width:100%;transition:border-color .2s,background .2s}
 .f input:focus,.f textarea:focus,.f select:focus{outline:none;border-color:var(--txt);background:#fff}
-.f input.bad{border-color:var(--err);background:#FDF1F3}
+.f input.bad,.f select.bad{border-color:var(--err);background:#FDF1F3}
 .f textarea{resize:vertical;min-height:84px}
 .f-chips{border:0;display:flex;flex-wrap:wrap;gap:8px}
 .f-chips legend{margin-bottom:8px;width:100%}

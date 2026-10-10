@@ -41,9 +41,13 @@
     if (!f.name.value.trim()) f.name.classList.add('bad');
     if (!/^\d{10}$/.test(phone)) f.phone.classList.add('bad');
     if (!f.name.value.trim() || !/^\d{10}$/.test(phone)) return fail('Please add your name and a 10-digit mobile number.');
+    const gstin = f.gstin.value.trim().toUpperCase();
+    f.state.classList.toggle('bad', !f.state.value); f.gstin.classList.remove('bad');
+    if (!f.state.value) return fail('Please select your state. It decides the GST on your invoice.');
+    if (gstin && !/^\d{2}[A-Z]{5}\d{4}[A-Z][0-9A-Z]Z[0-9A-Z]$/.test(gstin)) { f.gstin.classList.add('bad'); return fail('That GSTIN does not look right. Please check it, or leave it empty.'); }
     btn.disabled = true; btn.textContent = 'Opening secure payment…';
     try {
-      const [, sub] = await Promise.all([loadCheckout(), post({ action: 'create', plan: st.plan, billing: st.billing, name: f.name.value, phone, email: f.email.value, business: f.business.value })]);
+      const [, sub] = await Promise.all([loadCheckout(), post({ action: 'create', plan: st.plan, billing: st.billing, name: f.name.value, phone, email: f.email.value, business: f.business.value, state: f.state.value, gstin })]);
       const rzp = new window.Razorpay({
         key: sub.key_id, subscription_id: sub.subscription_id, name: 'Kriya', description: 'Kriya ' + sub.plan,
         prefill: { name: f.name.value, email: f.email.value, contact: '+91' + phone },
