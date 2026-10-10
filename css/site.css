@@ -147,16 +147,16 @@ h1 em,h2 em{font-style:normal;color:var(--red)}
 .trust span::before{content:'';width:7px;height:7px;border-radius:99px;background:var(--mint-dk)}
 
 /* the chaos -> order loop */
-.loop{position:relative;height:420px;border-radius:22px;background:var(--black);overflow:hidden;box-shadow:0 30px 70px -36px rgba(10,11,14,.7)}
+.loop{position:relative;height:420px;border-radius:22px;background:var(--card);border:1px solid var(--line);overflow:hidden;box-shadow:0 30px 70px -40px rgba(10,11,14,.35)}
 @media(max-width:520px){.loop{height:360px}}
-.loop-cap{position:absolute;left:0;right:0;bottom:16px;text-align:center;font-size:13px;font-weight:600;color:#8D909A;letter-spacing:.02em;z-index:5;transition:opacity .4s}
-.lc{position:absolute;width:190px;border-radius:12px;padding:10px 13px 11px;box-shadow:0 18px 36px -18px rgba(0,0,0,.8);will-change:transform,opacity}
+.loop-cap{position:absolute;left:0;right:0;bottom:16px;text-align:center;font-size:13px;font-weight:600;color:var(--grey);letter-spacing:.02em;z-index:5;transition:opacity .4s}
+.lc{position:absolute;width:190px;border-radius:12px;padding:10px 13px 11px;box-shadow:0 16px 30px -18px rgba(10,11,14,.45);will-change:transform,opacity}
 .lc small{display:block;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.7;margin-bottom:3px}
 .lc strong{display:block;font-size:15px;line-height:1.25;font-weight:800}
 @media(max-width:520px){.lc{width:150px;padding:8px 10px 9px}.lc strong{font-size:13px}}
 .lc-char{background:var(--char);color:#fff}.lc-mint{background:var(--mint);color:#13241B}.lc-peach{background:var(--peach);color:#2A1606}
 .lc-red{background:var(--red);color:#fff}.lc-sand{background:var(--sand);color:var(--txt)}
-.loop-logo{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);background:var(--ink);border:1px solid #2F323A;border-radius:16px;padding:16px 24px;opacity:0;z-index:3}
+.loop-logo{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);background:var(--card);border:1px solid var(--line);box-shadow:0 18px 40px -22px rgba(10,11,14,.45);border-radius:16px;padding:16px 24px;opacity:0;z-index:3}
 .loop-logo svg{width:110px;height:auto}
 
 /* ---------- screenshot frames ---------- */
