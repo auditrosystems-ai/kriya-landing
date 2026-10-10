@@ -47,7 +47,7 @@
     if (gstin && !/^\d{2}[A-Z]{5}\d{4}[A-Z][0-9A-Z]Z[0-9A-Z]$/.test(gstin)) { f.gstin.classList.add('bad'); return fail('That GSTIN does not look right. Please check it, or leave it empty.'); }
     btn.disabled = true; btn.textContent = 'Opening secure payment…';
     try {
-      const [, sub] = await Promise.all([loadCheckout(), post({ action: 'create', plan: st.plan, billing: st.billing, name: f.name.value, phone, email: f.email.value, business: f.business.value, state: f.state.value, gstin })]);
+      const [, sub] = await Promise.all([loadCheckout(), post({ action: 'create', plan: st.plan, billing: st.billing, name: f.name.value, phone, email: f.email.value, business: f.business.value, state: f.state.value, gstin, address: f.address.value.trim() })]);
       const rzp = new window.Razorpay({
         key: sub.key_id, subscription_id: sub.subscription_id, name: 'Kriya', description: 'Kriya ' + sub.plan,
         prefill: { name: f.name.value, email: f.email.value, contact: '+91' + phone },
