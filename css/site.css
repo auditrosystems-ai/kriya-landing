@@ -290,3 +290,8 @@ h1 em,h2 em{font-style:normal;color:var(--red)}
 .trial-strip b{display:block;font-size:16px}
 .trial-strip span{font-size:14.5px}
 .pay-trial{margin-top:14px;background:var(--mint);color:#13241B;border-radius:12px;padding:12px 14px;font-size:15px}
+
+.btn-line{background:transparent;border-color:var(--line2);color:var(--txt)}
+.btn-line:hover{border-color:var(--txt)}
+.hdr-cta .btn{white-space:nowrap}
+@media(max-width:460px){.hdr-cta{gap:6px}.hdr-cta .btn{padding:8px 10px;font-size:13px}.brand svg{height:21px}}
