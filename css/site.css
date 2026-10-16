@@ -295,3 +295,6 @@ h1 em,h2 em{font-style:normal;color:var(--red)}
 .btn-line:hover{border-color:var(--txt)}
 .hdr-cta .btn{white-space:nowrap}
 @media(max-width:460px){.hdr-cta{gap:6px}.hdr-cta .btn{padding:8px 10px;font-size:13px}.brand svg{height:21px}}
+
+.custom-line{max-width:880px;margin:18px auto 0;text-align:center;font-size:15px;color:var(--grey)}
+.custom-line b{color:var(--txt)}
