@@ -2,7 +2,7 @@
 // Netlify function, open Razorpay Checkout, then verify the payment signature server-side.
 (function () {
   const form = document.getElementById('payForm'); if (!form) return;
-  const API = 'https://auditrocrm.netlify.app/.netlify/functions/kriya-subscribe';
+  const API = 'https://app.kriyasystems.in/billing/kriya-subscribe';
   const PRICE = { basic: { monthly: 499, yearly: 4999 }, pro: { monthly: 899, yearly: 8999 } };
   const $ = s => form.querySelector(s), msg = $('.f-msg'), btn = $('#payBtn');
   const inr = v => '₹' + v.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });

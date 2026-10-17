@@ -52,7 +52,7 @@
   // ---------- trial / demo form -> Kriya CRM ----------
   const form = document.getElementById('trialForm');
   if (form) {
-    const ENDPOINT = 'https://auditrocrm.netlify.app/.netlify/functions/kriya-lead';
+    const ENDPOINT = 'https://app.kriyasystems.in/billing/kriya-lead';
     const msg = $('.f-msg', form), picks = {};
     const qs = new URLSearchParams(location.search);
     // preselect plan / billing / intent from the link that brought them here
