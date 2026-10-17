@@ -8,6 +8,8 @@
   const inr = v => '₹' + v.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const qs = new URLSearchParams(location.search);
   const st = { plan: qs.get('plan') === 'basic' ? 'basic' : 'pro', billing: qs.get('billing') === 'yearly' ? 'yearly' : 'monthly' };
+  // ?lock=1 (renewal links from a customer's CRM): the plan is fixed, only monthly/yearly can be chosen.
+  if (qs.get('lock') === '1') { const row = $('#pPlan').closest('.f'); if (row) row.style.display = 'none'; }
 
   const render = () => {
     [['#pPlan', 'plan'], ['#pBill', 'billing']].forEach(([sel, k]) => form.querySelectorAll(sel + ' button').forEach(b => b.classList.toggle('on', b.dataset.v === st[k])));
