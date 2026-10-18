@@ -327,3 +327,15 @@ h1 em,h2 em{font-style:normal;color:var(--red)}
 .wax-mini-in{display:flex;gap:18px;align-items:center;flex-wrap:wrap;background:#fff;border:2px solid #CDEFD9;border-radius:20px;padding:20px 22px}
 .wax-mini-in h2{font-size:22px;margin:4px 0 6px}.wax-mini-in p{margin:0;color:#4A4F57;font-size:15px;line-height:1.5}
 @media(max-width:760px){.wax-cmp{grid-template-columns:1fr}.wax-vs{justify-self:center}}
+
+/* Standard quotation sample (pricing) */
+.qsx-in{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center}
+.qsx h2 em{color:var(--red);font-style:normal}
+.qsx-list{margin:14px 0 0;padding-left:18px;line-height:1.9;font-size:15px}
+.qsx-up{margin-top:18px;background:#FBF6E4;border:1px solid #EFD98F;border-radius:14px;padding:14px 16px;font-size:15px;line-height:1.55}
+.qsx-pair{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px;align-items:center}
+.qsx-img{margin:0;text-align:center;position:relative}.qsx-img img{width:100%;height:auto;border-radius:10px;box-shadow:0 24px 50px -28px rgba(0,0,0,.45);border:1px solid #E6E3DC;transform:rotate(-1.5deg)}
+.qsx-img.prem img{transform:none;border:none;box-shadow:none;border-radius:0}
+.qsx-tag{position:absolute;top:-8px;right:6px;z-index:2;background:#C9A227;color:#1B1405;font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:4px 10px}
+.qsx-img figcaption{font-size:12.5px;color:#6B6F78;margin-top:14px}.qsx-img.prem figcaption{margin-top:8px}
+@media(max-width:820px){.qsx-in{grid-template-columns:1fr}}
