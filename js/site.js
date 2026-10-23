@@ -92,10 +92,10 @@
         if (!r.ok || !res.ok) throw new Error(r.status);
         track('Lead', { content_name: intent });
         const first = (f.name.value.trim().split(/\s+/)[0] || '').replace(/[<>&"]/g, '');
-        form.innerHTML = '<div class="f-done"><div class="ok">✓</div><h3>Thank you' + (first ? ', ' + first : '') + '.</h3><p>I\'ll reach out on WhatsApp at <b>' + phone.replace(/(\d{5})(\d{5})/, '$1 $2') + '</b> within one working day to set up your ' + (intent === 'Book a demo' ? 'demo' : 'free trial') + '.</p><a class="btn btn-wa" href="https://wa.me/919874700058?text=' + encodeURIComponent('Hi Akshay, I just filled the form on kriyasystems.in.') + '" target="_blank" rel="noopener">Or message me now</a></div>';
+        form.innerHTML = '<div class="f-done"><div class="ok">✓</div><h3>Thank you' + (first ? ', ' + first : '') + '.</h3><p>I\'ll reach out on WhatsApp at <b>' + phone.replace(/(\d{5})(\d{5})/, '$1 $2') + '</b> within one working day to set up your ' + (intent === 'Book a demo' ? 'demo' : 'free trial') + '.</p><a class="btn btn-wa" href="https://wa.me/916289411910?text=' + encodeURIComponent('Hi Akshay, I just filled the form on kriyasystems.in.') + '" target="_blank" rel="noopener">Or message me now</a></div>';
       } catch (err) {
         btn.disabled = false; btn.textContent = label;
-        msg.className = 'f-msg err'; msg.innerHTML = 'Something went wrong. Please try again, or <a class="txt-link" href="https://wa.me/919874700058" target="_blank" rel="noopener">WhatsApp 98747 00058</a>.';
+        msg.className = 'f-msg err'; msg.innerHTML = 'Something went wrong. Please try again, or <a class="txt-link" href="https://wa.me/916289411910" target="_blank" rel="noopener">WhatsApp 62894 11910</a>.';
       }
     });
   }

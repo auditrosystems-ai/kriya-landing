@@ -1,7 +1,7 @@
 // Small interactive pieces carried over from the original site. Each block does nothing if its markup isn't on the page.
 (function () {
   const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
-  const WA = 'https://wa.me/919874700058?text=';
+  const WA = 'https://wa.me/916289411910?text=';
 
   // ---------- reading progress ----------
   const bar = document.createElement('div'); bar.id = 'progress'; bar.setAttribute('aria-hidden', 'true'); document.body.prepend(bar);

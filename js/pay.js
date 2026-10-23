@@ -54,7 +54,7 @@
         key: sub.key_id, subscription_id: sub.subscription_id, name: 'Kriya', description: 'Kriya ' + sub.plan,
         prefill: { name: f.name.value, email: f.email.value, contact: '+91' + phone },
         notes: { business: f.business.value }, theme: { color: '#0F7A5A' },
-        modal: { ondismiss: () => fail('Payment window closed. Nothing was charged. You can try again, or <a class="txt-link" href="https://wa.me/919874700058" target="_blank" rel="noopener">WhatsApp us</a>.') },
+        modal: { ondismiss: () => fail('Payment window closed. Nothing was charged. You can try again, or <a class="txt-link" href="https://wa.me/916289411910" target="_blank" rel="noopener">WhatsApp us</a>.') },
         handler: async resp => {
           btn.textContent = 'Confirming…';
           try {
@@ -63,14 +63,14 @@
             const first = (f.name.value.trim().split(/\s+/)[0] || '').replace(/[<>&"]/g, '');
             form.innerHTML = '<div class="f-done"><div class="ok">✓</div><h3>Payment received. Thank you' + (first ? ', ' + first : '') + '.</h3><p>You are on <b>Kriya ' + sub.plan + '</b>. Razorpay will email your receipt, and Akshay will WhatsApp you shortly. Your GST invoice follows.</p><p class="muted small">Payment ID: ' + resp.razorpay_payment_id + '</p></div>';
           } catch (err) {
-            fail('Your payment went through, but we could not confirm it here. Please WhatsApp 98747 00058 with payment ID ' + resp.razorpay_payment_id + '.');
+            fail('Your payment went through, but we could not confirm it here. Please WhatsApp 62894 11910 with payment ID ' + resp.razorpay_payment_id + '.');
           }
         },
       });
       rzp.on('payment.failed', r => fail('Payment failed: ' + ((r.error && r.error.description) || 'please try again') + '. Nothing was charged.'));
       rzp.open();
     } catch (err) {
-      fail(err.message === 'checkout script' ? 'Could not load Razorpay. Check your connection and try again.' : /fetch/i.test(err.message || '') ? 'Could not reach the payment server. Please try again in a minute.' : (err.message || 'Something went wrong') + ' <a class="txt-link" href="https://wa.me/919874700058" target="_blank" rel="noopener">WhatsApp us</a> if it keeps happening.');
+      fail(err.message === 'checkout script' ? 'Could not load Razorpay. Check your connection and try again.' : /fetch/i.test(err.message || '') ? 'Could not reach the payment server. Please try again in a minute.' : (err.message || 'Something went wrong') + ' <a class="txt-link" href="https://wa.me/916289411910" target="_blank" rel="noopener">WhatsApp us</a> if it keeps happening.');
     }
   });
 })();
