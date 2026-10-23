@@ -405,3 +405,18 @@ h1 em,h2 em{font-style:normal;color:var(--red)}
 .waai-case-grid b{color:#EFD98F;font-size:13px;letter-spacing:.04em;text-transform:uppercase}.waai-case-grid p{margin:6px 0 0;font-size:14px;line-height:1.5;color:#D3E0D9}
 .waai-case-f{margin:14px 0 0;font-size:14px;color:#9FB3A9}
 @media(max-width:900px){.waai-case-grid{grid-template-columns:1fr 1fr}}@media(max-width:560px){.waai-case-grid{grid-template-columns:1fr}}
+
+/* Real screenshots of the WhatsApp screen inside the Kriya app */
+.appshots{margin-top:34px}
+.appshots-h{max-width:760px}
+.appshots-h h3{font-size:clamp(22px,2.6vw,30px);line-height:1.2;margin:6px 0 10px}
+.appshots-h p{color:var(--muted,#5E636E);margin:0 0 6px}
+.appshot{margin:18px 0 0;border-radius:16px;overflow:hidden;border:1px solid #1F2937;background:#0B0F17;box-shadow:0 18px 50px rgba(10,15,23,.18)}
+.appshot img{display:block;width:100%;height:auto}
+.appshot figcaption{background:#111827;color:#C9D3CF;font-size:13.5px;line-height:1.5;padding:11px 16px;border-top:1px solid #1F2937}
+.appshot figcaption b{color:#fff}
+.appshots-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start}
+.appshot a{display:block;cursor:zoom-in}
+.appshots-grid .appshot{margin-top:16px}
+.appshots-note{margin-top:18px;background:#EEF7F2;border:1px solid #CFE8DC;border-radius:14px;padding:14px 18px;font-size:15px;line-height:1.6}
+@media (max-width:900px){.appshots-grid{grid-template-columns:1fr}}
