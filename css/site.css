@@ -75,7 +75,7 @@ h1 em,h2 em{font-style:normal;color:var(--red)}
 .nav{display:flex;align-items:center;gap:4px}
 .nav a{white-space:nowrap;font-size:14.5px;font-weight:600;color:var(--grey);padding:8px 12px;border-radius:8px;transition:color .2s,background .2s}
 .nav a:hover{color:var(--txt);background:rgba(23,25,30,.05)}
-.nav a.on{color:var(--txt)}
+.nav a.on{color:#0F7A5A;background:#E6F2EC;box-shadow:inset 0 0 0 1px rgba(15,122,90,.28);font-weight:700}
 .hdr-cta{display:flex;align-items:center;gap:10px}
 .menu-btn{display:none;width:42px;height:42px;border-radius:10px;border:1px solid var(--line2);background:#fff;cursor:pointer;align-items:center;justify-content:center}
 .menu-btn span,.menu-btn span::before,.menu-btn span::after{display:block;width:18px;height:2px;background:var(--txt);border-radius:2px;position:relative;transition:transform .25s,background .25s}
@@ -344,7 +344,8 @@ h1 em,h2 em{font-style:normal;color:var(--red)}
 .btn-gold{background:var(--gold);color:#1C1606;box-shadow:0 10px 24px -14px rgba(201,162,39,.95)}
 .btn-gold:hover{background:#D9B23A}
 .nav a.nav-price{color:#5C4A0E;background:#F6EDCB;border:1px solid #E9D9A0}
-.nav a.nav-price:hover,.nav a.nav-price.on{background:#F0E2B0;color:#3D3106}
+.nav a.nav-price:hover{background:#F0E2B0;color:#3D3106}
+.nav a.nav-price.on{background:#F0E2B0;color:#3D3106;box-shadow:inset 0 0 0 2px #C9A227;font-weight:700}
 .hdr-price{display:none}
 @media(max-width:1100px){.hdr-price{display:inline-flex}}
 @media(max-width:420px){.hdr-cta .hdr-price{padding:9px 11px;font-size:13.5px}.hdr-cta{gap:6px}}
