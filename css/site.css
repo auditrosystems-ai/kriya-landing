@@ -420,3 +420,9 @@ h1 em,h2 em{font-style:normal;color:var(--red)}
 .appshots-grid .appshot{margin-top:16px}
 .appshots-note{margin-top:18px;background:#EEF7F2;border:1px solid #CFE8DC;border-radius:14px;padding:14px 18px;font-size:15px;line-height:1.6}
 @media (max-width:900px){.appshots-grid{grid-template-columns:1fr}}
+
+/* Kriya in 60 seconds: landscape on wide screens, portrait on phones */
+.vid60{max-width:980px;margin:22px auto 0;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);background:#000}
+.vid60 video{display:block;width:100%;height:auto}
+.vid60 .vid-port{display:none}
+@media (max-width:700px){.vid60{max-width:380px}.vid60 .vid-land{display:none}.vid60 .vid-port{display:block}}
