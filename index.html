@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kriya Systems · Software that runs your business · Kriya</title>
-<meta name="description" content="Kriya Systems builds software for Indian businesses: a ready CRM for businesses that quote (from ₹499/month, unlimited users, 15 days free), and custom portals, apps, payments and WhatsApp automation built around how you work.">
-<meta property="og:title" content="Kriya Systems · Software that runs your business · Kriya">
-<meta property="og:description" content="Kriya Systems builds software for Indian businesses: a ready CRM for businesses that quote (from ₹499/month, unlimited users, 15 days free), and custom portals, apps, payments and WhatsApp automation built around how you work.">
+<title>Kriya CRM · One flat price for your whole team</title>
+<meta name="description" content="Kriya CRM for Indian businesses that quote: leads, follow-ups, branded quotations, laptop-to-phone calling and the WhatsApp Business API with coexistence. One flat price, unlimited users, 15 days free.">
+<meta property="og:title" content="Kriya CRM · One flat price for your whole team">
+<meta property="og:description" content="Kriya CRM for Indian businesses that quote: leads, follow-ups, branded quotations, laptop-to-phone calling and the WhatsApp Business API with coexistence. One flat price, unlimited users, 15 days free.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0A0B0E">
 <link rel="icon" href="media/favicon.svg?v=2" type="image/svg+xml"><link rel="alternate icon" href="favicon.ico?v=2" sizes="48x48"><link rel="apple-touch-icon" href="media/apple-touch-icon.png?v=2">
@@ -23,26 +23,56 @@
   <div class="hdr-cta"><a class="btn btn-gold btn-sm hdr-price" href="pricing.html">Pricing</a><a class="btn btn-line btn-sm hdr-login" href="https://app.kriyasystems.in/">Log in</a><a class="btn btn-red btn-sm" href="start.html">Start free trial</a>
   <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false"><span></span></button></div>
 </div></header>
-<main><section class="hero">
+<main>
+<style>
+.k-hero h1{max-width:15ch}
+.k-trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:20px;font-size:14px;color:var(--grey)}
+.k-trust span::before{content:"✓ ";color:var(--red);font-weight:800}
+.k-flat{background:var(--black);color:var(--ltxt)}
+.k-flat h2,.k-flat h3{color:#fff}.k-flat .lead,.k-flat p{color:var(--lgrey)}
+.k-flat-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+.k-calc{background:var(--ink);border:1px solid var(--lline);border-radius:var(--r);padding:24px}
+.k-calc label{display:flex;justify-content:space-between;font-weight:700;color:#fff;font-size:15px}
+.k-calc input[type=range]{width:100%;margin:14px 0 20px;accent-color:#2BB57F}
+.k-row{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-top:1px solid var(--lline);gap:12px}
+.k-row span{font-size:14px;color:var(--lgrey)}.k-row b{font-family:var(--num);font-size:26px;letter-spacing:.5px;color:#fff;white-space:nowrap}
+.k-row.k-us b{color:#4ADE80}.k-save{margin-top:12px;padding:10px 14px;border-radius:10px;background:#0F2A1C;color:#86EFAC;font-weight:700;font-size:14px;text-align:center}
+.k-fine{font-size:12px;margin-top:10px;color:var(--lgrey)}
+.k-big{font-family:var(--num);font-size:56px;line-height:1;color:#4ADE80;letter-spacing:1px}
+.k-feat{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.k-f{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.k-f .k-i{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font-size:20px;background:var(--mint);margin-bottom:12px}
+.k-f h3{font-size:17px;margin-bottom:8px}.k-f ul{list-style:none;font-size:14px;color:var(--grey)}
+.k-f li{padding:4px 0 4px 20px;position:relative;line-height:1.45}.k-f li::before{content:"✓";position:absolute;left:0;color:var(--red);font-weight:800}
+.k-f .k-tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;background:var(--peach);margin-left:6px;vertical-align:middle}
+.k-call{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+.k-steps{counter-reset:s;list-style:none;margin-top:18px}
+.k-steps li{counter-increment:s;padding:10px 0 10px 46px;position:relative;font-size:15px}
+.k-steps li::before{content:counter(s);position:absolute;left:0;top:8px;width:32px;height:32px;border-radius:50%;background:var(--red);color:#fff;font-weight:800;display:grid;place-items:center}
+.k-devices{display:flex;gap:16px;align-items:center;justify-content:center}
+.k-lap{flex:1;max-width:300px;background:#0D1117;border-radius:12px;padding:14px;border:6px solid #2B2E35;color:#E5E7EB;font-size:12px}
+.k-lap .k-name{font-weight:800;font-size:15px;margin-bottom:10px}
+.k-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:8px;background:#16A34A;color:#fff;font-weight:800;font-size:13px}
+.k-toast{margin-top:12px;padding:8px 10px;border-radius:8px;background:#065F46;color:#D1FAE5;font-weight:600}
+.k-arrow{font-size:28px;color:var(--red)}
+.k-phone{width:150px;background:#0D1117;border-radius:26px;padding:14px 10px 18px;border:6px solid #2B2E35;color:#E5E7EB;font-size:11px;text-align:center}
+.k-phone .k-req{background:#065F46;border-radius:12px;padding:10px 8px;margin-top:20px}
+.k-phone .k-dial{margin-top:10px;background:#16A34A;border-radius:20px;padding:8px;color:#fff;font-weight:800;font-size:13px}
+.k-built{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.k-built span{padding:8px 14px;border:1px solid var(--line2);border-radius:30px;font-size:14px;background:var(--card)}
+.k-built b{font-weight:700}
+@media(max-width:900px){.k-feat{grid-template-columns:1fr 1fr}.k-flat-grid,.k-call{grid-template-columns:1fr}}
+@media(max-width:600px){.k-feat{grid-template-columns:1fr}.k-big{font-size:44px}.k-lap{font-size:11px}.k-phone{width:120px}}
+</style>
+
+<section class="hero k-hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow rv">Software that runs your business</div>
-      <h1 class="rv d1">Your business on one system. <em>Ready-made, or built for you.</em></h1>
-      <p class="lead rv d2">Kriya Systems builds software for Indian businesses. Start with our ready CRM for businesses that quote, or let us build a system around exactly how you work.</p>
-      <div class="paths rv d3">
-        <div class="path">
-          <small>Ready to use</small>
-          <b>Kriya CRM</b>
-          <p>Every enquiry, follow-up and quotation in one place, with the WhatsApp Business API on Pro. From ₹499/month, unlimited users.</p>
-          <div class="path-btns"><a class="btn btn-red btn-sm" href="start.html">Start 15-day free trial</a><a class="txt-link" href="features.html">See the CRM</a></div>
-        </div>
-        <div class="path path-custom">
-          <small>Built for you</small>
-          <b>Custom builds</b>
-          <p>Portals, mobile apps, payments, WhatsApp automation and integrations, designed around your process. Quoted per project.</p>
-          <div class="path-btns"><a class="btn btn-wa btn-sm" href="https://wa.me/916289411910?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20custom%20solution%20for%20my%20business" target="_blank" rel="noopener">Tell us what you need</a><a class="txt-link" href="custom.html">See custom builds</a></div>
-        </div>
-      </div>
+      <div class="eyebrow rv">The CRM for Indian businesses that quote</div>
+      <h1 class="rv d1">Every enquiry, call and WhatsApp in one place. <em>One flat price for your whole team.</em></h1>
+      <p class="lead rv d2">Leads, follow-ups, branded quotations, calling and the official WhatsApp Business API, on your laptop and your phone. Unlimited users, never charged per seat.</p>
+      <div class="btn-row rv d3"><a class="btn btn-red" href="start.html">Start 15-day free trial</a><a class="btn btn-wa" href="https://wa.me/916289411910?text=Hi%20Akshay%2C%20I%20saw%20Kriya.%20Quick%20question." target="_blank" rel="noopener">WhatsApp us</a></div>
+      <div class="k-trust rv d3"><span>Unlimited users</span><span>No card to start</span><span>Set up for you</span><span>Export your data anytime</span></div>
     </div>
     <div class="loop rv d2" id="loop" aria-label="Animation: scattered enquiries become one organised system">
       <div class="lc lc-char" data-c="0" style="top:7%;left:5%"><small>WhatsApp, 9:47 PM</small><strong>"Send price pls"</strong></div>
@@ -61,56 +91,78 @@
   </div>
 </section>
 
-<section class="built-band">
+<section class="bg-white" style="padding:36px 0">
   <div class="wrap">
-    <div class="eyebrow center rv">What we've built</div>
-    <div class="built-grid">
-      <div class="built rv"><b>CRM and WhatsApp automation</b><span>for a home-theatre and hi-fi retailer, with an AI assistant on WhatsApp</span></div>
-      <div class="built rv d1"><b>Sales CRM</b><span>for a Kolkata pump distributor</span></div>
-      <div class="built rv d2"><b>Sales CRM</b><span>for a wire-mesh manufacturer</span></div>
-      <div class="built rv"><b>Showroom CRM</b><span>for a furnishing business</span></div>
-      <div class="built rv d1"><b>Kriya</b><span>a multi-business CRM with the WhatsApp Business API, flows and AI</span></div>
+    <div class="eyebrow center rv">Running real businesses every day</div>
+    <div class="k-built rv">
+      <span><b>Home-theatre &amp; hi-fi retailer</b> · CRM, WhatsApp API, AI</span>
+      <span><b>Pump distributor</b>, Kolkata</span>
+      <span><b>Wire-mesh manufacturer</b></span>
+      <span><b>Furnishing showroom</b></span>
     </div>
+  </div>
+</section>
+
+<section class="k-flat">
+  <div class="wrap k-flat-grid">
+    <div class="rv">
+      <div class="eyebrow">One plan. Your whole team.</div>
+      <h2>Most CRMs charge you for every person you hire. <em>Kriya never does.</em></h2>
+      <p class="lead">Add your sales team, your accounts person, your partner and your site staff. The price stays the same, whether you are 2 people or 20.</p>
+      <div style="display:flex;gap:28px;margin-top:22px;flex-wrap:wrap">
+        <div><div class="k-big">₹4,999</div><p>a year, Basic, whole team</p></div>
+        <div><div class="k-big">₹8,999</div><p>a year, Pro, whole team</p></div>
+      </div>
+    </div>
+    <div class="k-calc rv d1">
+      <label for="kTeam">Your team size <span id="kTeamN">5 people</span></label>
+      <input id="kTeam" type="range" min="1" max="30" value="5">
+      <div class="k-row"><span>A typical per-user CRM<br>(about ₹600 per user per month)</span><b id="kThem">₹36,000</b></div>
+      <div class="k-row k-us"><span>Kriya Pro, unlimited users<br>(WhatsApp API and AI included)</span><b>₹8,999</b></div>
+      <div class="k-save" id="kSave">You keep ₹27,001 a year</div>
+      <p class="k-fine">Yearly prices before GST. Per-user figure is an approximate starting price publicly listed by per-seat CRMs in 2026, before add-ons. WhatsApp API setup on Kriya is a one-time ₹5,999.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <div class="eyebrow">Everything included</div>
+      <h2>A complete CRM. Nothing hidden, nothing extra per user.</h2>
+    </div>
+    <div class="k-feat">
+      <div class="k-f rv"><div class="k-i">🎯</div><h3>Leads &amp; follow-ups</h3><ul><li>Every enquiry saved, with your own categories</li><li>Hot, warm and cold at a glance</li><li>Pipeline with your own stages</li><li>Dated follow-ups and today's call list</li><li>Duplicate contacts merged</li></ul></div>
+      <div class="k-f rv d1"><div class="k-i">📄</div><h3>Branded quotations</h3><ul><li>Multi-page quotation on your letterhead</li><li>Product photos, GST and discounts worked out</li><li>PDF or straight to WhatsApp</li><li>Saved to the customer, ready to resend</li></ul></div>
+      <div class="k-f rv d2"><div class="k-i">💬</div><h3>WhatsApp Business API <span class="k-tag">Pro</span></h3><ul><li>Coexistence: keep your WhatsApp Business app on the same number</li><li>Shared team inbox, plus each contact's own chat</li><li>Templates with buttons, images and carousels</li><li>Flows and keyword auto-replies you build yourself</li><li>Automatic opt-out handling</li></ul></div>
+      <div class="k-f rv"><div class="k-i">📞</div><h3>Calling</h3><ul><li>Click Call on your laptop, your phone dials it</li><li>One-tap calling from every contact</li><li>Note the call the moment it ends</li><li>Uses your own SIM, no telephony bill</li></ul></div>
+      <div class="k-f rv d1"><div class="k-i">🎙️</div><h3>AI agent <span class="k-tag">Pro</span></h3><ul><li>Voice notes in English or Hinglish become notes and tasks</li><li>Reads WhatsApp screenshots and business cards</li><li>Ask in plain English: "hot leads not called this week"</li><li>Never creates duplicate contacts</li></ul></div>
+      <div class="k-f rv d2"><div class="k-i">📱</div><h3>A real app on your phone</h3><ul><li>Install from your browser to the home screen</li><li>Swipe between Quick, Chat, Details and History</li><li>Your own shortcuts on the home screen</li><li>Save any contact to your phone in one tap</li><li>Dark and light mode</li></ul></div>
+      <div class="k-f rv"><div class="k-i">🔒</div><h3>Your data, safe</h3><ul><li>Daily backups</li><li>Export everything to Excel, anytime</li><li>Deleted numbers stay out, they don't creep back</li><li>Every note shows who wrote it, and when</li></ul></div>
+      <div class="k-f rv d1"><div class="k-i">🧾</div><h3>Simple billing</h3><ul><li>Pay by UPI, card or net banking</li><li>Monthly or yearly, cancel anytime</li><li>Automatic GST invoice for every payment</li><li>15 days free, no card needed</li></ul></div>
+      <div class="k-f rv d2"><div class="k-i">🤝</div><h3>Growth &amp; support</h3><ul><li>A referral link for every contact, created automatically</li><li>Your Excel and old CRM data brought in for you</li><li>Setup done personally by the founder</li><li>Support on WhatsApp, no ticket queues</li></ul></div>
+    </div>
+    <p class="center rv" style="margin-top:22px"><a class="btn btn-ghost" href="features.html">See every feature in detail</a></p>
   </div>
 </section>
 
 <section class="bg-white">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div class="eyebrow">Sound familiar?</div>
-      <h2>Most businesses don't lose customers to price. <em>They lose them to the follow-up nobody made.</em></h2>
+  <div class="wrap k-call">
+    <div class="rv">
+      <div class="eyebrow">Calling, fixed</div>
+      <h2>Working on the laptop, but every call happens on the phone? <em>Not a problem any more.</em></h2>
+      <p class="lead">Typing a number off the screen into your phone is slow, and one wrong digit loses the call. With Kriya, the laptop sends the call to your phone.</p>
+      <ol class="k-steps">
+        <li>Click <b>Call</b> next to any contact on your laptop</li>
+        <li>Your phone shows <b>Call Ramesh</b>, and asks to dial</li>
+        <li>Talk on your own SIM. When you hang up, Kriya asks what was discussed and saves it as a note</li>
+      </ol>
     </div>
-    <div class="grid g3">
-      <div class="card tilt rv"><div class="ic ic-red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Enquiries get buried</h3><p>They arrive on WhatsApp, calls, walk-ins and IndiaMART. A week later, nobody can find that one serious buyer.</p></div>
-      <div class="card tilt rv d1"><div class="ic ic-peach"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Quotations take an evening</h3><p>Copy last month's Excel, fix the totals, export a PDF. By the time it's sent, the customer has already asked someone else.</p></div>
-      <div class="card tilt rv d2"><div class="ic ic-sand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div><h3>Follow-ups live in one head</h3><p>Nobody forgets on purpose. Nothing reminds anyone, so good deals quietly go cold.</p></div>
+    <div class="k-devices rv d1" aria-hidden="true">
+      <div class="k-lap"><div class="k-name">Ramesh Agarwal</div><span class="k-btn">📞 Call</span><div class="k-toast">📲 Sent to your phone: tap "Call Ramesh" there</div></div>
+      <div class="k-arrow">→</div>
+      <div class="k-phone"><div>Call request from your laptop</div><div class="k-req"><b>Ramesh Agarwal</b></div><div class="k-dial">📞 Call</div></div>
     </div>
-    <p class="rv" style="margin-top:22px">Curious what this costs you? <a class="txt-link" href="leak-check.html">Check your enquiry leak in 60 seconds →</a></p>
-  </div>
-</section>
-
-
-<section class="pro-band">
-  <div class="wrap">
-    <div class="pro-head rv">
-      <div class="eyebrow">Kriya Pro</div>
-      <h2>Your CRM, your WhatsApp Business API and an AI agent. <em>One plan, set up for you.</em></h2>
-      <p class="lead">Most growing businesses end up paying for a CRM, then a WhatsApp provider, then someone to design their quotation. Pro puts it all in one place, for less than a WhatsApp provider charges on its own.</p>
-    </div>
-    <div class="pro-grid">
-      <div class="pro-item rv"><span class="pro-ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3z"/></svg></span><div><h3>WhatsApp Business API, built in</h3><p>Automatic follow-up reminders and approved messages with buttons, images and carousels, from your own business number, straight through Meta. Set up personally by Akshay for a one-time ₹5,999 + GST, and never a monthly bill to AiSensy, Wati, Interakt or Cheerio.</p><span class="pro-worth">One-time setup ₹5,999 + GST</span></div></div>
-      <div class="pro-item rv d1"><span class="pro-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5"/></svg></span><div><h3>An AI agent that does the typing</h3><p>Speak a voice note in English or Hinglish, or paste a WhatsApp chat or a business card. Kriya files the contact, the note and the follow-up. Ask "hot leads not called this week" in plain English.</p><span class="pro-worth">Pro only</span></div></div>
-      <div class="pro-item rv"><span class="pro-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></span><div><h3>A quotation designed around your brand</h3><p>Your colours, logo, layout and terms, so every quote looks polished and builds trust before the customer reads the price.</p><span class="pro-worth">Worth ₹2,999 · included</span></div></div>
-      <div class="pro-item rv d1"><span class="pro-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></span><div><h3>Set up for you, personally</h3><p>Akshay sets up your stages, fields and workflow, brings in your old data from Excel or another CRM, and stays your direct line for priority support.</p><span class="pro-worth">Included</span></div></div>
-    </div>
-    <div class="pro-math rv">
-      <div class="pro-math-row"><span>A WhatsApp provider alone</span><b>₹12,000 to ₹42,000 a year*</b></div>
-      <div class="pro-math-row"><span>Branded quotation design</span><b>₹2,999 one time</b></div>
-      <div class="pro-math-row total"><span>Kriya Pro: CRM + AI agent + branded quotation + personal setup</span><b>₹8,999 a year</b></div>
-      <div class="pro-math-row"><span>Your own WhatsApp Business API, set up by Akshay</span><b>₹5,999 one time</b></div>
-    </div>
-    <div class="btn-row center rv" style="justify-content:center"><a class="btn btn-gold" href="pricing.html">See plans and compare</a><a class="btn btn-red" href="start.html?plan=pro">Try Pro free for 15 days</a></div>
-    <p class="pro-note rv">*Approximate starting prices publicly listed by WhatsApp providers in October 2026, before GST. Kriya prices plus 18% GST. WhatsApp's own message charges are set by Meta and paid directly to your Meta account. WhatsApp features are in beta.</p>
   </div>
 </section>
 
@@ -119,12 +171,12 @@
     <div class="grid g2" style="align-items:center;gap:36px">
       <div class="rv">
         <div class="eyebrow">WhatsApp, done properly</div>
-        <h2>Your WhatsApp now works like your best salesperson. <em>Day and night.</em></h2>
-        <p class="lead">The official WhatsApp Business API, built into Kriya Pro. No separate WhatsApp platform.</p>
+        <h2>The official WhatsApp Business API, inside your CRM. <em>No separate platform.</em></h2>
         <ul class="wa-points">
-          <li>💬 <b>Every chat becomes a lead</b>, marked hot, warm or cold</li>
-          <li>⚡ <b>Instant replies</b>, day or night, with buttons and photo carousels</li>
-          <li>🔘 <b>Flows and auto-replies</b> you build yourself, right in the app</li>
+          <li>🔁 <b>Coexistence</b>: keep chatting from the WhatsApp Business app on the same number</li>
+          <li>📥 <b>One inbox</b> for the whole team, and every chat on the contact's own page</li>
+          <li>🔘 <b>Flows and auto-replies</b> you build yourself</li>
+          <li>💸 <b>No monthly fee</b> to a WhatsApp provider. One-time setup, done for you</li>
         </ul>
         <div class="btn-row" style="margin-top:20px"><a class="btn btn-gold" href="whatsapp.html">See WhatsApp in Kriya</a><a class="btn btn-wa" href="https://wa.me/916289411910?text=Hi" target="_blank" rel="noopener">Say hi to Kriya, live</a></div>
       </div>
@@ -133,58 +185,9 @@
   </div>
 </section>
 
-
 <section>
   <div class="wrap">
-    <div class="sec-head rv">
-      <div class="eyebrow">What Kriya does</div>
-      <h2>Four things that keep every deal moving</h2>
-      <p class="lead">Simple enough for anyone on your team. Works on your phone and laptop, in the browser.</p>
-    </div>
-    <div class="frow">
-      <div class="frow-text rv"><span class="tag">Basic &amp; Pro</span><h3>Every lead in one place, with reminders</h3><p>Add a lead in seconds, from any channel. Set a follow-up date and Kriya reminds the right person on the right day.</p>
-        <ul class="ticks"><li>Leads, customers, dealers, architects: your own categories</li><li>Dated follow-up tasks for each person</li><li>See today's calls the moment you open it</li></ul></div>
-      <div class="shot rv d1"><div class="shot-bar"><i></i><i></i><i></i></div><img src="media/shot-dashboard.webp" alt="Kriya dashboard showing leads and today's follow-ups" loading="lazy"></div>
-    </div>
-    <div class="frow flip">
-      <div class="frow-text rv"><span class="tag">Basic &amp; Pro</span><h3>A branded quotation in under a minute</h3><p>Tick products from your catalogue. Kriya builds a clean, multi-page quotation on your letterhead, with photos, GST and discounts worked out.</p>
-        <ul class="ticks"><li>Your logo, colours and terms</li><li>Product photos and links</li><li>Saved to the customer, ready to resend</li></ul>
-        <p style="margin-top:14px"><a class="txt-link" href="quotation-builder.html">Try building one yourself →</a></p></div>
-      <div class="shot rv d1"><div class="shot-bar"><i></i><i></i><i></i></div><img src="media/shot-quotation.webp" alt="A quotation built in Kriya" loading="lazy"></div>
-    </div>
-    <div class="frow">
-      <div class="frow-text rv"><span class="tag tag-pro">Pro</span><h3>Just say it. The AI agent does the typing.</h3><p>Speak a voice note or paste a WhatsApp chat. Kriya works out whether it's a new contact, a note or a follow-up, and files it.</p>
-        <ul class="ticks"><li>Voice notes in English or Hinglish</li><li>Reads WhatsApp screenshots and business cards</li><li>Never creates duplicate contacts</li></ul>
-        <p style="margin-top:14px"><a class="txt-link" href="features.html#ai">See the AI agent in action →</a></p></div>
-      <div class="shot rv d1"><div class="shot-bar"><i></i><i></i><i></i></div><img src="media/scene-ai-voice.webp" alt="A voice note turned into a contact, a note and a task" loading="lazy"></div>
-    </div>
-    <div class="frow flip">
-      <div class="frow-text rv"><span class="tag">Basic &amp; Pro</span><h3>Your whole team, on one screen</h3><p>Every deal in a pipeline with your own stages. See who is handling what, without asking anyone.</p>
-        <ul class="ticks"><li>Unlimited users, one flat fee</li><li>Every note shows who wrote it, and when</li><li>Export all your data any time</li></ul></div>
-      <div class="shot rv d1"><div class="shot-bar"><i></i><i></i><i></i></div><img src="media/shot-pipeline.webp" alt="Kriya pipeline with deals in stages" loading="lazy"></div>
-    </div>
-    <p class="center rv" style="margin-top:12px"><a class="btn btn-ghost" href="features.html">See all features</a></p>
-  </div>
-</section>
-
-<section class="bg-white">
-  <div class="wrap">
-    <div class="sec-head center rv">
-      <div class="eyebrow">How it works</div>
-      <h2>Up and running in a day. Free for 15 days.</h2>
-    </div>
-    <div class="grid g3">
-      <div class="card tilt rv"><div class="num" style="font-size:40px;color:var(--red);line-height:1">1</div><h3 style="margin-top:10px">Create your free account</h3><p>Email and password, or Google. No card, no payment.</p></div>
-      <div class="card tilt rv d1"><div class="num" style="font-size:40px;color:var(--red);line-height:1">2</div><h3 style="margin-top:10px">Set it up in minutes</h3><p>Add your products, logo and team, and bring in your leads from Excel. On Pro, we set it all up for you.</p></div>
-      <div class="card tilt rv d2"><div class="num" style="font-size:40px;color:var(--red);line-height:1">3</div><h3 style="margin-top:10px">Use it for 15 days, then decide</h3><p>Continue on Basic or Pro, monthly or yearly. Or walk away, no questions asked.</p></div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="sec-head center rv"><div class="eyebrow">See it in action</div><h2>Kriya in 60 seconds</h2>
-      <p class="lead">From a busy WhatsApp to every enquiry in one place: leads, follow-ups, quotations and the WhatsApp Business API, together.</p></div>
+    <div class="sec-head center rv"><div class="eyebrow">See it in action</div><h2>Kriya in 60 seconds</h2></div>
     <div class="vid60 rv d1">
       <video class="vid-land" controls playsinline preload="none" poster="media/kriya-60s-landscape-cover.jpg"><source src="media/kriya-60s-landscape.mp4" type="video/mp4"></video>
       <video class="vid-port" controls playsinline preload="none" poster="media/kriya-60s-portrait-cover.jpg"><source src="media/kriya-60s-portrait.mp4" type="video/mp4"></video>
@@ -200,19 +203,30 @@
     <div class="sec-head center rv">
       <div class="eyebrow">Simple pricing</div>
       <h2>One price for your whole team</h2>
-      <p class="lead">No per-user charges. Prices plus 18% GST.</p>
+      <p class="lead">Unlimited users on both plans. Prices plus 18% GST.</p>
     </div>
     <div class="plans" style="margin-top:0">
       <div class="plan tilt rv"><h3>Basic</h3><p class="for">Everything you need to stop losing enquiries</p>
         <div class="price"><span class="amt">₹499</span><span class="per">/ month</span></div><p class="price-note">or ₹4,999 / year</p>
-        <ul class="ticks"><li>Leads, reminders and pipeline</li><li>Quotation builder</li><li>Unlimited users</li></ul>
+        <ul class="ticks"><li>Leads, follow-ups and pipeline</li><li>Quotation builder</li><li>Laptop-to-phone calling</li><li>Phone app, backups, export</li><li><b>Unlimited users</b></li></ul>
         <a class="btn btn-ghost btn-block" href="pay.html?plan=basic">Subscribe</a><a class="plan-trial" href="start.html?plan=basic">or try it free for 15 days</a></div>
-      <div class="plan pop tilt rv d1"><span class="plan-badge">Most popular</span><h3>Pro</h3><p class="for">The complete system: CRM, WhatsApp Business API and AI agent, set up for you</p>
+      <div class="plan pop tilt rv d1"><span class="plan-badge">Most popular</span><h3>Pro</h3><p class="for">The complete system, set up for you</p>
         <div class="price"><span class="amt">₹899</span><span class="per">/ month</span></div><p class="price-note">or ₹8,999 / year</p>
-        <ul class="ticks"><li><b>Everything in Basic</b></li><li><b>WhatsApp Business API</b> (one-time setup ₹5,999 + GST)</li><li>AI agent: voice notes, WhatsApp screenshots</li><li>Branded quotation design included</li><li>Personal setup by Akshay</li></ul>
+        <ul class="ticks"><li><b>Everything in Basic</b></li><li><b>WhatsApp Business API</b> with coexistence (one-time setup ₹5,999 + GST)</li><li>Team WhatsApp inbox, flows, auto-replies</li><li>AI agent: voice notes, screenshots, cards</li><li>Branded quotation design included</li><li>Personal setup and priority WhatsApp support</li></ul>
         <a class="btn btn-red btn-block" href="pay.html?plan=pro">Subscribe</a><a class="plan-trial" href="start.html?plan=pro">or try it free for 15 days</a></div>
     </div>
     <p class="center rv" style="margin-top:22px"><a class="btn btn-gold" href="pricing.html">Compare plans in detail</a></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head center rv"><div class="eyebrow">How it works</div><h2>Up and running in a day</h2></div>
+    <div class="grid g3">
+      <div class="card tilt rv"><div class="num" style="font-size:40px;color:var(--red);line-height:1">1</div><h3 style="margin-top:10px">Create your free account</h3><p>Email or Google. No card, no payment.</p></div>
+      <div class="card tilt rv d1"><div class="num" style="font-size:40px;color:var(--red);line-height:1">2</div><h3 style="margin-top:10px">We set it up with you</h3><p>Your products, logo, team and old leads from Excel, brought in. On Pro, we do it all.</p></div>
+      <div class="card tilt rv d2"><div class="num" style="font-size:40px;color:var(--red);line-height:1">3</div><h3 style="margin-top:10px">Use it 15 days, then decide</h3><p>Continue monthly or yearly, or walk away. No questions asked.</p></div>
+    </div>
   </div>
 </section>
 
@@ -220,23 +234,30 @@
   <div class="wrap narrow">
     <div class="sec-head rv"><div class="eyebrow">Questions</div><h2>Quick answers</h2></div>
     <div class="faq rv">
-      <div class="faq-item"><button class="faq-q">Do I need to pay to start?<span class="plus"></span></button><div class="faq-a"><p>No. The 15-day free trial needs no card and no payment. You only choose a plan if you decide to continue.</p></div></div>
       <div class="faq-item"><button class="faq-q">Is it really one price for my whole team?<span class="plus"></span></button><div class="faq-a"><p>Yes. Basic and Pro both include unlimited users. Hiring more people never raises your bill.</p></div></div>
-      <div class="faq-item"><button class="faq-q">Does it work on my phone?<span class="plus"></span></button><div class="faq-a"><p>Yes. Kriya runs in your phone's browser and on any laptop. There's nothing to install.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Can I keep using the WhatsApp Business app after the API is connected?<span class="plus"></span></button><div class="faq-a"><p>Yes. Kriya connects through coexistence, so you keep using the WhatsApp Business app on your phone with the same number, while the CRM sends templates, flows and auto-replies.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Does it work on my phone?<span class="plus"></span></button><div class="faq-a"><p>Yes. Open it in your phone's browser and add it to your home screen. It opens like an app, full screen, with your own shortcuts.</p></div></div>
+      <div class="faq-item"><button class="faq-q">How does calling work?<span class="plus"></span></button><div class="faq-a"><p>Tap Call on your phone, or click Call on your laptop and your phone offers to dial it. Calls go through your own SIM, so there is no separate telephony bill.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Do I need to pay to start?<span class="plus"></span></button><div class="faq-a"><p>No. The 15-day free trial needs no card and no payment.</p></div></div>
       <div class="faq-item"><button class="faq-q">Can you bring in my existing leads?<span class="plus"></span></button><div class="faq-a"><p>Yes. Excel sheets, old CRM exports and price lists come in as part of setup, with original dates kept.</p></div></div>
+      <div class="faq-item"><button class="faq-q">How do I get support?<span class="plus"></span></button><div class="faq-a"><p>On WhatsApp, directly with the founder. No ticket numbers, no waiting for a call slot.</p></div></div>
     </div>
-    <p class="rv" style="margin-top:18px">More questions? See the <a class="txt-link" href="pricing.html#faq">pricing FAQ</a> or <a class="txt-link" href="https://wa.me/916289411910?text=Hi%20Akshay%2C%20I%20saw%20Kriya.%20Quick%20question." target="_blank" rel="noopener">WhatsApp Akshay</a>.</p>
   </div>
 </section>
 
 <section>
   <div class="wrap">
     <div class="cta-band rv">
-      <div><h2>Try Kriya free for 15 days</h2><p>Create your account and start in minutes. No card, no payment upfront.</p></div>
-      <div class="btn-row" style="margin-top:0"><a class="btn btn-red" href="start.html">Start free trial</a><a class="btn btn-gold" href="pricing.html">See plans and pricing</a></div>
+      <div><h2>Try Kriya free for 15 days</h2><p>Your whole team, one flat price. No card, no payment upfront.</p></div>
+      <div class="btn-row" style="margin-top:0"><a class="btn btn-red" href="start.html">Start free trial</a><a class="btn btn-gold" href="custom.html">Need something custom?</a></div>
     </div>
   </div>
 </section>
+<script>
+(function(){var r=document.getElementById('kTeam');if(!r)return;var f=function(n){return '₹'+n.toLocaleString('en-IN')};
+function u(){var n=+r.value,t=n*600*12,s=t-8999;document.getElementById('kTeamN').textContent=n+(n>1?' people':' person');document.getElementById('kThem').textContent=f(t);document.getElementById('kSave').textContent=s>0?'You keep '+f(s)+' a year':'Kriya Pro includes WhatsApp API and AI';}
+r.addEventListener('input',u);u();})();
+</script>
 </main>
 <footer class="ftr"><div class="wrap">
   <div class="ftr-grid">
